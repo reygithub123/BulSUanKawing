@@ -1,0 +1,136 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+<link rel="stylesheet" href="{% static 'css/documents.css' %}" />
+<link rel="stylesheet" href="{% static 'css/documents-submitted.css' %}" />{%endblock%}{% block content %}
+
+
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>DOCUMENTS</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <a href="{%url 'cms:view-pending-documents'%}" class="d-inline">Go Back</a><br>
+        <br>
+    </div>
+
+    <div class="search">
+
+        <form class="form-contain">
+
+            <input value="{%if searched%}{{searched}}{% endif %}" placeholder="Search" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+            <input type="submit" value="Search" id="search-button">
+        </form>
+
+    </div>
+    <br>
+    <div class="d-flex " id="buttons-area">
+
+        <div class="dropdown justify-content-evenly w-100">
+
+            <form class="w-100">
+                <p class="sublabel">Document Status: </p>
+                <select id="dropdown" name="state">
+                    <option value="All" selected >All</option>
+                {% for state in states %}
+                
+                {% if currentstate|safe == state.status|safe %} 
+                    <option value="{{state.id}}" selected >{{state.status}}</option>
+                {%else%}
+                    <option value="{{state.id}}" >{{state.status}}</option>
+                {%endif%}
+                {% endfor %}
+                </select>
+                <button class="btn-filter">Filter</button>
+            </form>
+        </div>
+        <div class="dropdown justify-content-evenly w-100">
+            <form>
+                <p class="sublabel">Document Category: </p>
+                <select id="dropdown" name="filter"><br>
+                    <option value="All" selected >All</option>
+                {% for category in categories %}
+                {% if filter|safe == category.id|safe %} 
+                    <option value="{{category.id}}" selected >{{category.name}}</option>
+                {%else%}
+                    <option value="{{category.id}}" >{{category.name}}</option>
+                {%endif%}
+                {% endfor %}
+                </select>
+                <button class="btn-filter">Filter</button>
+            </form>
+        </div>
+
+    </div>
+
+    <br>
+
+
+</div>
+<div class="m-2 d-flex justify-content-center text-center">
+    <h2 class="w-75">{{current_org.acronym}}'s {% if current_category|safe == currentstate|safe %}All {%elif current_category == all %}{{current_category}} {{currentstate}} {% else %}{{currentstate}} {{current_category}} {%endif%}Documents </h2>
+</div>
+<div class="documentslist ">
+
+    {% for document in documents%}
+    <div class="document ">
+        <div class="document-div ">
+            <div class="d-flex w-75 align-content-center flex-column ellipsis ">
+                <p class="document-org-name ellipsis "><strong>{{document.name}}</strong></p>
+                <p class="sublabel w-100 ellipsis "><em>{{document.state}}:&emsp; </em> {{document.category}}</p>
+
+            </div>
+            <div class="document-buttons d-flex flex-wrap ">
+                <a href="{%url 'cms:view-document' current_org.id document.id%} " class="buttonlinks smallfontbtn yellowbutton ">Open</a>
+
+
+            </div>
+
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+<br> {% if documents.has_other_pages %}
+<div class="centercomponents max-width clearfix ">
+    <ul class="pagination ">
+        {% if documents.has_previous %}
+        <li>
+            <a href="?page={{ documents.previous_page_number }} ">
+                <div class="pagedesigns ">&laquo;</div>
+            </a>
+        </li>
+        {% else %}
+        <li class="disabled "><span>&laquo;</span></li>
+        {% endif %} {% for i in documents.paginator.page_range %} {% if documents.number == i %}
+        <li class="active "><span>{{ i }} <span class="sr-only "></span></span>
+        </li>
+        {% else %}
+        <li>
+            <a href="?page={{ i }} ">
+                <div class="pagedesigns "> {{ i }} </div>
+            </a>
+        </li>
+        {% endif %} {% endfor %} {% if documents.has_next %}
+        <li>
+            <a href="?page={{ documents.next_page_number }} ">
+                <div class="pagedesigns ">&raquo;</div>
+            </a>
+        </li>
+        {% else %}
+        <li class="disabled "><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+
+</div>
+
+
+
+{% include 'org_documents/documentsmodals.html'%} {% endblock %}

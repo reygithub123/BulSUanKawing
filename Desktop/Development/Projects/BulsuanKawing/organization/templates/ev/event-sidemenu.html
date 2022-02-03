@@ -1,0 +1,14 @@
+{% load static %}
+<br>
+<div class="d-flex flex-row w-100 align-stretch inmenu">
+    <a href="{% url 'org:view-calendar' %}" class="buttonbackgroundyl buttonmenu flex-1 centertext buttonlinks ">
+        Calendar View
+    </a>
+
+    <a href="{% url 'org:view-events'%}" class=" buttonbackgroundyl buttonmenu flex-1  centertext  buttonlinks  ">
+        Events View
+    </a>
+    <a href="{% url 'org:view-add-event'%}" class=" buttonmenu buttonbackgroundbl flex-1 centertext buttonlinks">
+        Add Event 
+    </a>
+</div>

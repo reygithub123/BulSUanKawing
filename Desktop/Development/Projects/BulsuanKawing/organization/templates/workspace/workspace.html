@@ -1,0 +1,61 @@
+{%extends 'base_organization.html'%} {% load static %}{% block content %}
+
+<div class="main-container">
+
+    <div class="banner-container clearfix">
+        <div class=" banner-img ">
+            <div class="trapezoid"></div>
+        </div>
+        <div class="title">
+            <h1>WORKSPACE</h1>
+        </div>
+    </div>
+
+    <div class="to-do-list-txt">
+        <h4>{% if workspace %}{{workspace.name}} {% else %} No Available Work Set {% endif%}</h4>
+        <button class="bluebutton centerautomargin" onclick="openrename('{{workspace.name}}','{{workspace.id}}')">Rename</button>
+    </div>
+
+    <div class="to-do-list-container centercomponents">
+        <div class="tdladd ">
+            <a class="centercomponents" id="open-add" href=".">
+                <div class="add-button centercomponents">
+                </div>
+            </a>
+        </div>
+
+        {%for work in works%} {% if work.wp_ID_id == workspace.id %}
+        <div class="to-do-list " style="background-color:{{work.color}}">
+
+            <p class='contrast tasktitle'>{{work.name}}</p>
+            <div class="simplelist contrast">
+                <ul>
+                    {% for task in tasks%} {% if task.tdl_ID_id == work.id %}
+
+                    <li> {{task.name}}
+
+                        <p class="taskmarksmall">({{task.state.name}})</p>
+                        {% if task.is_past_due%}
+                        <p class="taskmarksmall">(overdue)</p> {% endif %}
+                    </li>
+                    {% endif %} {% endfor %}
+                </ul>
+            </div>
+            <div class=" tdlbuttons">
+                <input type="image" src="{% static '/images/edit_48px.png'%}" onclick="location.href='/user/workspace/{{work.id}}';">
+                <input type="image" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{work.id}}')">
+            </div>
+
+        </div>{% endif %} {% endfor %}
+    </div>
+
+</div>
+<div id="popup" class="modal " role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            Loading...
+        </div>
+    </div>
+</div>
+
+{% include 'workspace/modal-add-work.html' %} {% include 'workspace/modals-workspace.html' %} {% endblock %}

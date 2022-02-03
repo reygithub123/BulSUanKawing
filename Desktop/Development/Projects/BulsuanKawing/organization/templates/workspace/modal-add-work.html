@@ -1,0 +1,43 @@
+<script>
+    $(document).on("click", "#open-add", function(e) {
+        e.preventDefault();
+
+
+        $.get('/user/workspace/').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#addworkform');
+            $(".modal-content").html(mainbar);
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+    });
+    $(document).on("submit", "#addwork", function(e) {
+
+        $(".submitbtn").attr('disabled', true);
+    })
+</script>
+
+<div class="hidden">
+    <!--addwork-->
+    <div id="addworkform" class="modal-content">
+        <div class="modal-body">
+            <form method="POST" action="." id="addwork">
+                {% csrf_token %}
+                <p>Name of your To-do list<br>{{addform.name}}</p>
+                <p>Order:<br>{{addform.order}}</p>
+                <p>Color: {{addform.color}}</p>
+                <br>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" class="submitbtn" value="Proceed" form="addwork" class="submitbtn" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Close
+          </button>
+        </div>
+    </div>
+</div>

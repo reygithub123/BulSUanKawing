@@ -1,0 +1,161 @@
+{%extends 'base_landing.html'%} {% load static %} {% block content %} {%if successmessage%}
+<div class="left text-center monster">
+    {{successmessage|safe}}
+
+
+</div>
+{% endif %}
+<div class="welcome-div monster ">
+    <div class="div-txt-info clearfix">
+        <h1 class="heading-oso">{{office_name}} <br>({{acronym}})</h1>
+        <br>
+        <hr><br>
+
+        <p class="p-description">
+            {{about|safe}}
+
+        </p>
+
+        {% if about2 %}
+        <p class="p-description hidden">
+            {{about|safe}}
+        </p>
+        {% else %} {% endif %}
+
+    </div>
+    <div class="responsive-logo-center">
+        <div class="logo-right">
+            <div class="square-yellow sh1 animation"></div>
+            <div class="square-gray sh2 animation"></div>
+            <img src="media/{{logo}}" class="oso-logo-2">
+        </div>
+
+    </div>
+</div>
+<div class="main-div-upcoming-events  clearfix">
+    <div class="upcoming-events-yellow-div hideme">
+        <h2 class="heading-upcoming-events">Upcoming Events & Activities</h2>
+    </div>
+    {% if events %}
+    <br>
+    <div class="clearfix">
+        {% if event1 %}
+        <div class="headevent hideme clearfix">
+            <a href="/events/{{event1.id}}">
+
+                <div class="large-article-container-flex clearfix"><img src="media/{{images.0}}" alt="{{images.0}}" class="large-article-img zoom"></div>
+                <div style="background-image: url('media/{{images.0}}')" class="blur fullwidth-large-background article-bg "></div>
+            </a>
+        </div>
+        {% endif %} {% if event2 %}
+        <div class="div-oso-events hideme clearfix">
+
+            <div class="large-article-container-grid div-event-img clearfix">
+                <div class="large-article-container-flex  clearfix"><img src="media/{{images.1}}" alt="{{images.1}}" class="large-article-img zoom"></div>
+                <div style="background-image: url('media/{{images.1}}')" class="blur fullwidth-large-background article-bg "></div>
+            </div>
+            <div class="div-oso-events-txt">
+                <h2 class="event-title">{{event2.title}}</h2>
+                <p class="event-desc">{{event2.description|safe}}</p>
+                <a class="clearfix buttonlinks evlink" href="{% url 'landing:view-oso-event-desc' event2.id%}">
+                    <div class="btn-click-for-more">Click for more</div>
+                </a>
+            </div>
+
+        </div>
+        {% endif %} {% if event3 %}
+        <div class="div-oso-events reverse hideme clearfix">
+
+
+            <div class="div-oso-events-txt">
+                <h2 class="event-title">{{event3.title}}</h2>
+                <p class="event-desc">{{event3.description}}</p>
+                <a class="clearfix buttonlinks evlink" href="{% url 'landing:view-oso-event-desc' event3.id%}">
+                    <div class="btn-click-for-more">Click for more</div>
+                </a>
+            </div>
+            <div class="large-article-container-grid div-event-img clearfix">
+                <div class="large-article-container-flex  clearfix"><img src="media/{{images.2}}" alt="{{images.2}}" class="large-article-img zoom"></div>
+                <div style="background-image: url('media/{{images.2}}')" class="blur fullwidth-large-background article-bg "></div>
+            </div>
+
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="alternative-txt">No Upcoming Events</div>
+
+    {% endif %}
+
+
+</div>
+
+<div class="announcements hideme">
+    <div class="announcements-txt">
+        <p>News & Updates</p>
+    </div>
+    <div class="announcements-center">
+        <div class="announcements-container">
+            {% if announcements %} {% for announcement in new_announcements %}
+            <div class="small-article clearfix">
+                <div class="small-article-container-grid clearfix">
+                    <div class="small-article-container-flex clearfix">
+
+                        <img src="media/{{announcement.img_ID.img_src}}" alt="{{announcement.img_ID.img_src}}" class="small-article-img zoom">
+
+                    </div>
+
+                    <div style="background-image: url('media/{{announcement.img_ID.img_src}}')" class="blur fullwidth-background article-bg clearfix"></div>
+                </div>
+                <div class="small-article-text ">
+                    <p class="small-article-title ellipsis">
+
+                        <a href="{% url 'landing:view-news-info' announcement.id%}" class="buttonlinks">{{announcement.title}}</a>
+                    </p>
+                    <p class="sublabel">{{announcement.published}} </p>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <div class="alternative-txt">No News Yet</div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<div class="left hideme clearfix">
+
+    {% include 'email.html'%}
+
+</div>
+<script>
+    $(function() { // $(document).ready shorthand
+        $('.monster').fadeIn('slow');
+    });
+
+    $(document).ready(function() {
+
+        /* Every time the window is scrolled ... */
+        $(window).scroll(function() {
+
+            /* Check the location of each desired element */
+            $('.hideme').each(function(i) {
+
+                var bottom_of_object = $(this).position().top + $(this).outerHeight();
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                /* If the object is completely visible in the window, fade it it */
+                if (bottom_of_window > bottom_of_object) {
+
+                    $(this).animate({
+                        'opacity': '1'
+                    }, 1500);
+
+                }
+
+            });
+
+        });
+
+    });
+</script>
+{% include 'messenger-plugin.html'%} {% endblock %}

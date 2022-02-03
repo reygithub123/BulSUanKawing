@@ -1,0 +1,160 @@
+/* ABOUT PART*/
+
+.txt-container {
+    float: left;
+    width: 40%;
+    height: auto;
+    margin: 5% 3%;
+}
+
+.txt-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    font-size: 50px;
+}
+
+.txt-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 8%;
+    text-align: justify;
+}
+
+.logo-design {
+    margin: auto;
+    margin-top: 60%;
+    width: 80%;
+    height: 60px;
+    background-color: #00546A;
+    border-radius: 30px;
+}
+
+.org-logo-about {
+    width: 200px;
+    float: right;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.display-container {
+    margin-top: 5%;
+    margin-right: 5%;
+    padding-bottom: 20px;
+    background-color: #e6e6e6;
+    max-width: 400px;
+    min-width: 300px;
+    padding-top: 2%;
+    float: right;
+    border-radius: 20px;
+    box-shadow: 20px 30px 3px #f5d446;
+    height: 300px
+}
+
+
+/* EVENTS*/
+
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.events-div {
+    background-color: #00546A;
+    height: 100px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+}
+
+.events-div h2 {
+    color: white;
+    font-size: 80px;
+    text-align: center;
+}
+
+.div-org-events {
+    width: 100%;
+    height: auto;
+}
+
+.div-org-events-txt {
+    float: left;
+    margin-top: 15%;
+    width: 50%;
+}
+
+.heading-congress {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.txt-congress {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.btn-click-for-more {
+    background-color: #00546A;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #00546A;
+    padding: 5px;
+    text-decoration: none;
+    display: inline;
+    margin-left: 30px;
+}
+
+.btn-click-for-more:hover {
+    background-color: white;
+    color: black;
+    transition: .5s;
+    border: 2px solid black;
+}
+
+.img-congress {
+    width: 100%;
+}
+
+.div-event1 {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+    float: left;
+    width: 50%;
+}
+
+@media screen and (max-width: 700px) {
+    .switch {
+        flex-direction: column;
+    }
+    .txt-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .main-div-upcoming-events {
+        width: 100%;
+    }
+    .div-oso-events-txt {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .div-event1 {
+        width: 100%;
+    }
+    .reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

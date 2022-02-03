@@ -1,0 +1,15 @@
+{% extends 'articles/cal/base.html' %} {% load static %} {% block content %}
+<div class="biggerhalf clearfix">
+    <div class="spacearound10 clearfix">
+        <a class=" btn left previousbutton" href="{% url 'landing:view-oso-calendar' %}?{{ prev_month }}">
+            <p class="arrowkeys">&#8592;</p> Previous Month </a>
+        <a class=" btn right nextbutton" href="{% url 'landing:view-oso-calendar' %}?{{ next_month }}">  Next Month <p class="arrowkeys">&#8594;</p> </a>
+    </div>
+    <div class="clearfix">
+
+        {{ calendar }}
+    </div>
+</div>
+
+
+{% endblock %}

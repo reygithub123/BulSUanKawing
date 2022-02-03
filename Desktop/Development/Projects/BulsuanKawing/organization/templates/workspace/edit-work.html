@@ -1,0 +1,140 @@
+{%extends 'base_organization.html'%} {% load static %}{% block content %}
+<script>
+    $(document).ready(ready)
+
+    function ready() {
+
+        $(".inpf").removeClass('inpclear')
+        $("#id_color").change(function() {
+            var $color = $("#id_color").val()
+            $("#change").css("background-color", $color)
+            $(".change").css("background-color", $color);
+            $(".change").css("border", "2px solid" + $color);
+
+            $("#id_name").focus(function() {
+                $("#id_name").css("border-bottom", "2px solid" + $color);
+            })
+            $("#id_name").focusout(function() {
+                $("#id_name").css("border-bottom", "2px solid #212121");
+            })
+        });
+        var $color = $("#id_color").val()
+        $("#change").css("background-color", $color);
+        $(".change").css("background-color", $color);
+        $(".change").css("border", "2px solid" + $color);
+        $("#id_name").focus(function() {
+            $("#id_name").css("border-bottom", "2px solid" + $color);
+        })
+        $("#id_name").focusout(function() {
+            $("#id_name").css("border-bottom", "2px solid #212121");
+        })
+
+    }
+</script>
+<div id="change" class="workcontainer h-100 space-around centercomponents">
+
+
+    <div class="editwork clearfix">
+        <div class="centercomponentsgrid top  ">
+
+
+            <div class="workform">
+                <form id="workform" action="{% url 'org:view-edit-work' work.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="workformname">{{workform.name}}</div>
+                    </p>
+
+                    <div class="ordcolor">
+                        <div class="order-fix">Order: {{workform.order}}</div>
+                        <div class="color-fix"> Color: {{workform.color}}</div>
+                    </div>
+                    <br>
+
+
+                </form>
+            </div>
+            <div class="">
+                <input class="submitbtn w-75" type="submit" value="Save" form="workform" />
+            </div>
+        </div>
+        <script>
+        </script>
+
+        <button id="open-add" class="add-task change"><div class="contrast">Add Task</div></button>
+        <div class=tasks-comp>
+            <div class="tasks">
+                {% for state in states%}
+                <hr>
+                <p class="statename">{{state.name}}</p>
+                <div class="tasktype">
+                    {% for task in tasks %} {% if task.state.id == state.id%}
+                    <div class="task centercomponents " id="{{task.id}}">
+                        <div class="task-left">
+                            <form id="changestateform" action="/user/workspace/{{work.id}}/{{task.id}}/changestate" method="POST">
+                                {% csrf_token %}
+
+                                <input name="id" type="hidden" value="{{task.id}}">
+                                <div class="taskname fa-ellipsis-h ">
+                                    <p>{%if task.is_past_due %} (Overdue) {% endif %} {{task.name}} </p>
+                                    <div class="taskmarkmedium">{{task.time_begin}} to {{task.time_end}}</div>
+
+                                </div>
+                                <div class="taskbuttons">
+                                    {% for sb in states %} {% if not task.state == sb %}
+                                    <button class="change textsmallbutton btn{{task.id}} " name="state" type="radio" id="btn{{task.id}}" value="{{sb.id}}" onclick="event.preventDefault(); update('{{task.id}}','{{sb.id}}')"><div class="contrast">{{sb.name}}</div></button>                                    {% endif %} {%endfor%}
+
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="task-right">
+
+                            <input type="image" src="{% static '/images/edit_48px.png'%}" class="smallbutton small-img-button shadowed-png-hover" onclick="event.preventDefault(); edit_task('{{task.id}}')" name="edit">
+                            <input type="image" src="{% static '/images/del_48px.png'%}" class="smallbutton small-img-button shadowed-png-hover" onclick="event.preventDefault(); open_delete('{{task.id}}')" id="btn_del" name="delete" value="delete">
+
+                        </div>
+
+
+                    </div>
+                    {% endif %} {% endfor%}
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function update(task_id, sb_id) {
+            $(".smallbutton").attr('disabled', true);
+            $(".textsmallbutton").attr('disabled', true);
+            /*$(".upd").attr('disabled', 'disabled')*/
+
+            $.ajax({
+                type: "POST",
+                url: "/user/workspace/{{work.id}}/" + task_id + "/changestate",
+                data: {
+                    id: task_id,
+                    state: sb_id,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                },
+                success: function(d) {
+
+                    $.get('/user/workspace/{{work.id}}').then(function(html) {
+                        // Success response
+                        mainbar = $(html).find('.tasks');
+                        $(".tasks-comp").html(mainbar);
+
+                        $(document).ready(ready)
+                    }, function() {
+                        // Error response
+                        document.write('Access denied');
+                    }, 1000);
+
+                }
+            });
+        }
+    </script>
+</div>
+{% include 'workspace/modal-add-task.html'%} {% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base_landing.html'%}{% load static %} {% block content%}
+<div class="maximumheight">
+    <div class="img-bsu-div clearfix">
+        <img src="/media/{{album.key_image}}" alt="{{album.name}}" class="img-bsu ">
+    </div>
+
+    <div class="div-title">
+        <h1 class="h1-gallery">{{album.name}}</h1>
+    </div>
+
+
+
+    <div class="image-container">
+        <div>
+            {% if images %} {% for image in images %}
+            <div class="sample-img-container"><img src="/media/{{image.image}}" alt="{{image.name}}" id="{{image.id}}" class="sample-img"></div>
+            {% endfor %} {% endif%}
+
+
+        </div>
+    </div>
+
+    <div id="imagemodal" class="modal">
+        <span class="close">&times;</span>
+        <img class="image-modal" id="img01">
+        <div id="caption"></div>
+    </div>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("imagemodal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var imgs = document.getElementsByClassName("sample-img");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    for (let i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+</script>
+
+{% endblock %}

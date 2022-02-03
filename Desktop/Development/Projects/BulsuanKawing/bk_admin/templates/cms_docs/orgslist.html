@@ -1,0 +1,109 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+<link rel="stylesheet" href="{% static 'css/documents.css' %}" />
+<link rel="stylesheet" href="{% static 'css/documents-submitted.css' %}" />{%endblock%}{% block content %}
+
+
+
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>DOCUMENTS</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="search">
+
+        <form class="form-contain">
+
+            <input value="{%if searched%}{{searched}}{% endif %}" placeholder="Search" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+            <input type="submit" value="Search" id="search-button">
+        </form>
+
+    </div>
+    <br>
+    <div class="d-flex " id="buttons-area">
+
+        <div class="dropdown justify-content-start">
+
+            <form>
+                <label for="state">Documents with  Status of: </label>
+                <select id="dropdown" name="state">
+                    <option value="None" selected >All</option>
+                {% for state in states %}
+                
+                {% if currentstate|safe == state.status|safe %} 
+                    <option value="{{state.id}}" selected >{{state.status}}</option>
+                {%else%}
+                    <option value="{{state.id}}" >{{state.status}}</option>
+                {%endif%}
+                {% endfor %}
+                </select>
+                <button class="btn-filter">Filter</button>
+            </form>
+        </div>
+
+    </div>
+
+    <br>
+</div>
+<div class="documentslist">
+
+    {% for org in orgs%}
+    <div class="document">
+        <div class="document-div">
+            <div class="d-flex w-75 align-content-center flex-column ellipsis">
+                <p class="document-org-name ellipsis "><strong>{{org.acronym}}</strong></p>
+                <p class="sublabel w-100 ellipsis"><em>{{org.name}}</em></p>
+
+            </div>
+            <div class="document-buttons">
+                <a href="{%url 'cms:view-org-documents' org.id%}" class="buttonlinks yellowbutton">Open</a>
+            </div>
+
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+<br> {% if orgs.has_other_pages %}
+<div class="centercomponents max-width clearfix">
+    <ul class="pagination">
+        {% if orgs.has_previous %}
+        <li>
+            <a href="?page={{ orgs.previous_page_number }}">
+                <div class="pagedesigns">&laquo;</div>
+            </a>
+        </li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %} {% for i in orgs.paginator.page_range %} {% if orgs.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+        </li>
+        {% else %}
+        <li>
+            <a href="?page={{ i }}">
+                <div class="pagedesigns"> {{ i }} </div>
+            </a>
+        </li>
+        {% endif %} {% endfor %} {% if orgs.has_next %}
+        <li>
+            <a href="?page={{ orgs.next_page_number }}">
+                <div class="pagedesigns">&raquo;</div>
+            </a>
+        </li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+
+</div>
+
+
+
+{% endblock %}

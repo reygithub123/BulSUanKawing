@@ -1,0 +1,69 @@
+{% extends 'org/events/base.html' %} {% block content %}
+
+<div class="biggerhalf clearfix space-around eventshalf">
+    <form method="POST" action="{% url 'landing:view-events' org_id%}" class="form-contain">
+        {% csrf_token %}
+        <input placeholder="Search Event" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+        <input type="submit" value="Search" id="search-button">
+    </form>
+
+    <div class='events-container max-width maximumheight clearfix'>
+        {% for event in events %}
+        <div class="small-article clearfix">
+            <div class="small-article-container-grid clearfix">
+                <div class="small-article-container-flex clearfix">
+
+                    <img src="/media/{{event.img_ID.img_src}}" alt="event.img_ID.img_src" class="small-article-img zoom">
+
+                </div>
+
+                <div style="background-image: url('/media/{{event.img_ID.img_src}}')" class="blur fullwidth-background article-bg clearfix"></div>
+
+
+            </div>
+            <div class="small-article-text ">
+                <p class="small-article-title ellipsis">
+                    {{ event.get_org_view_event_html | safe }}
+                </p>
+                <p class="sublabel">{{event.time_begin}} to {{event.time_end}}</p>
+
+
+            </div>
+        </div> {% endfor %}
+
+    </div>
+
+    {% if events.has_other_pages %}
+    <div class="centercomponents max-width clearfix">
+        <ul class="pagination">
+            {% if events.has_previous %}
+            <li>
+                <a href="?page={{ events.previous_page_number }}">
+                    <div class="pagedesigns">&laquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %} {% for i in events.paginator.page_range %} {% if events.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ i }}">
+                    <div class="pagedesigns"> {{ i }} </div>
+                </a>
+            </li>
+            {% endif %} {% endfor %} {% if events.has_next %}
+            <li>
+                <a href="?page={{ events.next_page_number }}">
+                    <div class="pagedesigns">&raquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div> {% endblock %}

@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Log-in|BulSUan Kawing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/loginstyle.css' %}?version=5">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registrationstyle.css' %}">
+</head>
+
+<body>
+
+
+
+
+    <div class="main">
+        <div class="content-container">
+            <div class="login-logo-container">
+                <img src="{% static 'images/osologo.png'%}" class="osologo">
+            </div>
+            <div class="white-box">
+                <br>
+                <form method='POST'> {% csrf_token %}
+                    <h2 class="heading2-login">Login</h2>
+                    <br>
+                    <label class="Txt-username">Username</label>
+                    <input type="text" name="username" class="Textfield-Username" required>
+
+                    <label class="Txt-password">Password</label>
+                    <input type="password" name="password" class="Textfield-Password" required><br> {% for message in messages %}
+                    <p id='messages'>{{message}}</p>
+                    {%endfor%}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}" />
+                    <input type="submit" class="submit" value="Log In" /> <br>
+
+                    <p class="p-question">Don't have an account yet?
+                        <a href="/accounts/signup/" class="register-link">Register here</a></p>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <img src="{% static 'images/wave.png'%}" class="img-wave">
+
+</body>
+
+</html>

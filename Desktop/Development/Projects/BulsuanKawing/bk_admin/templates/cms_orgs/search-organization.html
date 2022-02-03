@@ -1,0 +1,130 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+<link rel="stylesheet" href="{% static 'css/documents.css' %}" />
+<link rel="stylesheet" href="{% static 'css/search-organization.css' %}" />{% endblock %} {% block content%}
+
+
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>ORGANIZATIONS</h1>
+    </div>
+</div>
+
+<div class="list-of-org-text">
+    <h4>List of Recognized Organizations</h4><br>
+    <p id="sub-text">Inside the Bulacan State University</p>
+</div>
+<div class="container">
+
+    <div class="search">
+        <form method="GET" action="{% url 'cms:view-organizations'%}" class="form-contain">
+
+            <input placeholder="Search by name, state, college, program, or category" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" {% if searched %}value="{{searched}}" {%endif%}id="search-input">
+            <input type="submit" value="Search" id="search-button">
+        </form>
+    </div>
+    {% if searched %}<br>
+    <div class="d-flex justify-content-center">
+
+        <input type="image" src="{% static 'images/reset_100px.png'%}" value="Reset" class="small-img-button shadowed-png-hover" onclick="location.href=`{% url 'cms:view-organizations'%}`" /></div> {%endif%}
+    <br>
+
+    <div class="d-flex " id="buttons-area">
+        <div class="dropdown d-flex justify-content-center w-100">
+
+            <form class="w-100">
+                <p class="sublabel">Status: </p>
+                <select id="dropdown" name="filter">
+                <option value="All" selected >All</option>
+                <option value="p" {% if filter == "p" %} selected {%endif%}>Pending</option>
+                <option value="r" {% if filter == "r" %} selected {%endif%}>Registered</option>
+            </select>
+                <button class="btn-filter">Filter</button>
+            </form>
+        </div>
+        <div class="dropdown d-flex justify-content-evenly w-100">
+
+            <form class="w-100">
+                <p class="sublabel">Category: </p>
+                <select id="dropdown" name="filter">
+                <option value="All" selected >All</option>
+                {% for cat in categories%}
+                    <option value="{{cat.id}}" {% if filter == cat.id %} selected{%endif%} >{{cat.name}}</option>{%endfor%}
+                
+            </select>
+                <button class="btn-filter">Filter</button>
+            </form>
+        </div>
+    </div>
+</div>
+{%if pendingorg%}
+<center><br>
+    <p class="pend sublabel">A total of <strong>{{pendingorg}}</strong> organization/s needs apporval, review these organizations
+
+        <a href="{% url 'cms:view-organizations'%}?filter=p">now</a>
+
+    </p>
+</center>
+{% endif %}
+<div class="org-img-container clearfix">
+    {% for org in orgs.object_list %}
+
+    <div class="org-img1-container">
+        <a href="{% url 'cms:view-organization' org.id %}"> <img src="/media/{{org.logo}}" class="img1" name="img1" alt="OSO Logo"></a>
+        <a href="{% url 'cms:view-organization' org.id %}"><label for="img1" class="img1-label ">({{org.acronym}}) {{org.name}}</label></a>
+        <p>{%if org.state == 'r' %}
+            <em class="appr">Registered</em> {% elif org.state == 'p' %}
+            <em class="pend">Needs Approval</em>{%endif%}
+        </p>
+    </div>
+    {% endfor %}
+
+
+
+
+</div>
+<center>
+
+    {% if orgs.has_other_pages %}
+    <div class="centercomponents max-width clearfix">
+        <ul class="pagination">
+            {% if orgs.has_previous %}
+            <li>
+                <a href="?page={{ orgs.previous_page_number }}">
+                    <div class="pagedesigns">&laquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %} {% for i in orgs.paginator.page_range %} {% if orgs.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ i }}">
+                    <div class="pagedesigns"> {{ i }} </div>
+                </a>
+            </li>
+            {% endif %} {% endfor %} {% if orgs.has_next %}
+            <li>
+                <a href="?page={{ orgs.next_page_number }}">
+                    <div class="pagedesigns">&raquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+</center>
+
+
+
+</body>
+
+</html>
+
+{%endblock%}

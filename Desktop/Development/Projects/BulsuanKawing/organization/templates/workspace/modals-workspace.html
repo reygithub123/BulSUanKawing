@@ -1,0 +1,167 @@
+<script>
+    $(document).on("click", "#close", function(e) {
+        e.preventDefault();
+        var $popup = $("#popup");
+        $popup.modal("hide");
+        $(".modal-content").html("Loading...");
+
+    });
+
+    function open_delete(list_id) {
+
+        $.get('/user/workspace/').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#deletelistform');
+            $(".modal-content").html(mainbar);
+            $("#list_id_delete").val(list_id)
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+
+    }
+
+    $(document).on("submit", "#formdeletelist", function(e) {
+        e.preventDefault();
+
+        $("#submitbtn").attr('disabled', true);
+        list_id = $("#list_id_delete").val()
+
+        $.ajax({
+            type: "POST",
+            url: "/user/workspace/delete",
+            data: {
+                id: list_id,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(d) {
+
+                $.get('/user/workspace/').then(function(html) {
+                    // Success response
+                    mainbar = $(html).find('.to-do-list-container');
+                    $(".to-do-list-container").html(mainbar.html());
+
+                    var $popup = $("#popup");
+                    $popup.modal("hide");
+                    $(".modal-content").html("Loading...");
+
+                    $("#submitbtn").removeAttr('disabled');
+
+                }, function() {
+                    // Error response
+                    document.write('Access denied');
+                }, 1000);
+
+
+            }
+        });
+
+
+    });
+
+    function openrename(name, id) {
+
+        $.get('/user/workspace/').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#renameworkspaceform');
+            $(".modal-content").html(mainbar);
+            $("#wpname").val(name)
+            $("#wpid").val(id)
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+
+    }
+    $(document).on("submit", "#formrenamewp", function(e) {
+        e.preventDefault();
+
+        $("#submitbtn").attr('disabled', true);
+        id = $("#wpid").val()
+        name = $("#wpname").val()
+
+        $.ajax({
+            type: "POST",
+            url: "/user/workspace/rename",
+            data: {
+                id: id,
+                name: name,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(d) {
+
+                $.get('/user/workspace/').then(function(html) {
+                    // Success response
+                    mainbar = $(html).find('.to-do-list-txt');
+                    $(".to-do-list-txt").html(mainbar.html());
+
+                    var $popup = $("#popup");
+                    $popup.modal("hide");
+                    $(".modal-content").html("Loading...");
+
+                    $("#submitbtn").removeAttr('disabled');
+
+                }, function() {
+                    // Error response
+                    document.write('Access denied');
+                }, 1000);
+
+
+            }
+        });
+
+
+    });
+</script>
+
+<div class="hidden">
+    <!--rename wp-->
+    <div id="renameworkspaceform" class="modal-content">
+
+        <div class="modal-body">
+            <div>
+                Rename your workspace:
+            </div>
+            <form action="" id="formrenamewp">
+                {% csrf_token %}
+                <input type="hidden" id="wpid">
+                <input type="text" class="standard-field" id="wpname">
+
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <input id="submitbtn" type="submit" class="submitbtn" value="Confirm" form="formrenamewp" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Cancel
+            </button>
+        </div>
+
+    </div>
+    <!--delete list-->
+    <div id="deletelistform" class="modal-content">
+
+        <div class="modal-body">
+            <form action="" id="formdeletelist">
+                {% csrf_token %}
+                <input type="hidden" id="list_id_delete">
+            </form>
+            <div>
+                Are you sure you want to delete this list? All progress will be lost and will not be retrieveable!
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input id="submitbtn" class="submitbtn" type="submit" value="Yes" form="formdeletelist" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Cancel
+            </button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,39 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}{% endblock %} {% block content%}
+<div class="clearfix">
+    <div class="space-around">
+        <a href="{% url 'cms:view-officers'%}">View Officers</a>
+        <h2 id="doctitle" class="document-title ">Add Officer</h2>
+    </div>
+    <hr>
+    <div class="p-3 w-100 d-flex align-content-lg-stretch justify-content-center w-100 ">
+        <div class="container">
+
+            {% if message %} {{message|safe}} {% endif %}
+
+            <form method="POST" action="{% url 'cms:view-add-officer'%}" enctype="multipart/form-data">
+                {% csrf_token %} {{officerform.as_p}}
+                <p class="info">&#9432; Please indicate the appropriate officer hierarchy</p>
+                <button class="bluebutton" type="submit"> Save </button>
+                <a href="{% url 'cms:view-officers'%}" class="redbutton buttonlinks">Cancel</a>
+
+                <br>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    function changeImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(".upload-image").attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+{%endblock%}

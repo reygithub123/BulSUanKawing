@@ -1,0 +1,74 @@
+ {%extends 'base_landing.html'%}{% load static %} {% block content %}
+
+
+<div class="top-div">
+    <h1 id="organization-text">ORGANIZATIONS</h1>
+</div>
+
+<div class="list-of-org-text">
+    <h4>List of Recognized Organizations</h4><br>
+    <p id="sub-text">Inside the Bulacan State University</p>
+    <form method="POST" action="{% url 'landing:search-org'%}" class="form-contain">
+        {% csrf_token %}
+        <input placeholder="Search by Name, College, Program, or Acronym" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+        <input type="submit" value="Search" id="search-button">
+    </form>
+</div>
+
+<div class="org-img-container clearfix">
+    {% for org in page_obj.object_list %}
+
+    <div class="org-img1-container">
+        <a href="{% url 'landing:view-org' org.id %}"> <img src="/media/{{org.logo}}" class="img1" name="img1" alt="OSO Logo"></a>
+        <a href="{% url 'landing:view-org' org.id %}"><label for="img1" class="img1-label">({{org.acronym}}) {{org.name}}</label></a>
+    </div>
+    {% endfor %}
+
+
+
+
+</div>
+<center>
+
+    {% if page_obj.has_other_pages %}
+    <div class="centercomponents max-width clearfix">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}">
+                    <div class="pagedesigns">&laquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %} {% for i in page_obj.paginator.page_range %} {% if page_obj.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ i }}">
+                    <div class="pagedesigns"> {{ i }} </div>
+                </a>
+            </li>
+            {% endif %} {% endfor %} {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}">
+                    <div class="pagedesigns">&raquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+
+</center>
+
+
+
+</body>
+
+</html>
+
+{%endblock%}

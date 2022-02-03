@@ -1,0 +1,23 @@
+ {%extends 'setup/base.html'%} {% load static %} {% block content %}
+
+<div class="main-container">
+
+    <div class="top">
+        <img src="{% static '/images/top-design.png'%}" alt="Top Design" class="top-design">
+    </div>
+
+
+    <div class="welcome-txt">
+        <p>Welcome to BulSUan Kawing, an academic transaction management system of the Office of Student Organizations and Activities <br> (BulSU-OSOA) </p>
+
+    </div>
+    <div class="btn-continue-container">
+        <a href="{% url 'org:view-dashboard'%}" class="continue-btn">
+            <div>Continue</div>
+        </a>
+    </div>
+    <div class="additional-message">
+        <p>Your application to the database is pending for validation. But you can already start your journey towards BulSUan Kawing. Padayon!</p>
+    </div>
+</div>
+<img src="{% static '/images/wave.png'%}" class="img-wave"> {% endblock %}

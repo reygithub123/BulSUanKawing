@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>{% load static %} {% include 'favicon.html' %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--base css-->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base/general-elements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cms/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cms/navigation-bar.css' %}">
+
+</head>
+
+<body>
+    <div class="banner-container clearfix">
+        <div class=" banner-img ">
+            <div class="trapezoid"></div>
+        </div>
+        <div class="title">
+            <h1 style="font-family: 'Monterrat', sans-serif; color:#ffd700">Documents</h1>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="returnmessage space-around  ">
+
+        <h2 style=" font-family: 'Monterrat', sans-serif;
+        font-weight: 700;color:#ffd700">{{title_message|safe}}</h2>
+        <p style="font-family: 'Monterrat', sans-serif;">{{inmessage|safe}}</p>
+        {%if message %}<br>
+        <p style="font-family: 'Monterrat', sans-serif;">Here's some additional message from the office: </p>
+        <p class="message d-block" style="border-radius: 5px;
+        border: 2px solid #ffd700;
+        background-color: #ffed88;
+        padding: 20px;
+        display:block;">{{message}}</p>
+        {%endif%}
+
+        <p style="font-family: 'Monterrat', sans-serif;"><em>You may now visit <strong>BulSUan Kawing </strong>to review your files.</em> </p>
+    </div>
+
+
+</body>
+<style>
+    .returnmessage h1 {
+        font-family: 'Monterrat', sans-serif;
+        font-weight: 700;
+    }
+    
+    .returnmessage p {
+        font-family: 'Monterrat', sans-serif;
+    }
+    
+    .returnmessage .message {
+        border-radius: 5px;
+        border: 2px solid #ffd700;
+        background-color: #ffed88;
+        padding: 20px;
+    }
+</style>
+
+</html>

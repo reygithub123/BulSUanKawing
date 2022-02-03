@@ -1,0 +1,89 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/inside-gallery.css' %}">{% endblock %} {% block content%}
+
+<div class="maximumheight">
+    <div class="img-bsu-div clearfix">
+        <img src="/media/{{album.key_image}}" alt="{{album.name}}" class="img-bsu ">
+    </div>
+
+    <div class="div-title">
+        <h1 id="albumtitle" class="h1-gallery">{{album.name}}</h1>
+    </div>
+
+    <div class="m-md-2 p-3">
+        <button class="bluebutton align-self-start smallfontbtn" onclick="event.preventDefault(); open_rename() ">Rename Album Title</button>
+        <br><br>
+        <form action="{% url 'cms:upload-images' album.id%}" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <input type="file" name="file" class="generalfileupload smallfontbtn" accept="image/*" required multiple>
+            <input type="submit" class="bluebutton smallfontbtn" value="Upload">
+        </form>
+        <br>
+    </div>
+
+    <div class="image-container">
+        <div class=" d-flex w-100 justify-content-center flex-row">
+
+
+            <button class=" checknav shadowed-png-hover redbutton " onclick="event.preventDefault(); uncheck()">&#10005;</button>
+            <input id="delbtn " type="image" class="checknav  justify-self-center space-between medium-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete()">
+
+
+        </div>
+        <form action="{% url 'cms:delete-images' album.id%}" method="POST" id="del-images">
+            {% csrf_token %}
+
+            <br>
+
+            <div>
+                {% if images %} {% for image in images %}
+
+                <div class="sample-img-container">
+                    <img src="/media/{{image.image}}" alt="{{image.name}}" id="{{image.id}}" class="sample-img">
+                    <input class="imagecheck " type="checkbox" name="images" id="{{image.id}}" value="{{image.id}}"><br>
+
+                </div>
+
+                {% endfor %} {% else %}
+                <p class="empty">No Images Available, add at least one</p>
+                {% endif%}
+
+
+            </div>
+        </form>
+    </div>
+
+    <div id="imagemodal" class="modal hidden">
+        <span class="close">&times;</span>
+        <img class="image-modal" id="img01">
+        <div id="caption"></div>
+    </div>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("imagemodal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var imgs = document.getElementsByClassName("sample-img");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    for (let i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+</script>
+{% include 'cms_gallery/album-modals.html'%} {% endblock %}

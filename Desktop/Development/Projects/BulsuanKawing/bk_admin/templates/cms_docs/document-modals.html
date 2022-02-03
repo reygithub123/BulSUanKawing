@@ -1,0 +1,107 @@
+<script>
+    filecon = ""
+    $(document).ready(function(e) {
+        filecon = $("#filecontainer").html()
+        check()
+    })
+
+    function check() {
+
+        if ($('#filed').is(":checked")) {
+            $("#filecontainer").html(filecon)
+        } else {
+            $("#filecontainer").html("")
+        }
+    }
+    $(document).on("change", "#filed", function(e) {
+        check()
+    })
+    $(document).on("submit", "#returndoc", function(e) {
+        $("#submitbtn").attr('disabled', true);
+    })
+
+    $(document).on("click", "#close", function(e) {
+        e.preventDefault();
+        var $popup = $("#popup");
+        $popup.modal("hide");
+        $(".modal-content").html("Loading...");
+
+    });
+
+    function open_return() {
+        $.get("{% url 'cms:view-document' current_org.id document.id %}").then(function(html) {
+            // Success response
+            mainbar = $(html).find('#returndocform');
+            $(".modal-content").html(mainbar.html());
+
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+    }
+</script>
+
+
+
+
+<div id="popup" class="modal " role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            Loading...
+        </div>
+    </div>
+</div>
+
+
+
+<div class="hidden">
+    <!--return doc-->
+    <div id="returndocform" class="modal-content">
+
+        <div class="modal-body">
+            <div>
+                <form enctype="multipart/form-data" method="POST" action="{% url 'cms:return-document' current_org.id document.id %}" id="returndoc">
+                    {% csrf_token %}
+                    <p class="info">&#9432; Returning without files will only change/retain the status of submitted documents</p>
+                    <label for="filed">Return with Files: </label>
+
+                    <input type="checkbox" name="filed" id="filed" checked><br><br>
+                    <div id="filecontainer">
+                        <p>Upload File: </p>
+                        <input id="files" type="file" multiple name="files" class="generalfileupload  align-self-end smallfontbtn" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf">
+                        <br><br>
+                    </div>
+
+                    <p>Message/Note: </p>
+                    <textarea name="message" id="message" cols="20" rows="10" class="standard-field"></textarea>
+
+                    <p class="info"><strong><em>Pending</em></strong> if needs revision</p>
+                    <p class="error"><strong><em>Decline</em></strong> if rejected</p>
+
+                    <p>Status:* <em class="info">&#9432;  Please assure accurate status</em> </p>
+                    <select class="standard-field" id="status" name="status" required>
+                        <option value="{{approved.id}}">{{approved.status}}</option>
+                        <option value="{{pending.id}}">{{pending.status}}</option>
+                        <option value="{{declined.id}}">{{declined.status}}</option>
+
+                    </select>
+
+
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input id="submitbtn" class="submitbtn" type="submit" value="Return" form="returndoc" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Cancel
+            </button>
+        </div>
+
+    </div>
+
+
+
+</div>

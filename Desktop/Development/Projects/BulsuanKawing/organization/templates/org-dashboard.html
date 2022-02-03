@@ -1,0 +1,97 @@
+{%extends 'base_organization.html'%} {% load static %}{% block content %}
+
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>DASHBOARD</h1>
+    </div>
+</div>
+
+
+<div class="d-flex switch justify-content-center align-content-center align-items-center">
+
+    <div class="txt-container">
+        <h2>About {{org.acronym}}</h2>
+        <p>{% if not org.state == pendingstate%} The {{org.name}}{% if org.acronym %}, or {{org.acronym}}{% endif %}, is a {{org.category}} {%if org.category == collegeorg %} from the {{org.program.college}} ({{org.program.college_acronym}}){%endif%} under
+            {{org.program.name}} ({{org.program.acronym}}) {%else%}
+            <em class="empty">The General Information is still being added by the Admin along with {{org.acronym}}'s validation, please wait for a moment.</em> {% endif %}
+        </p>
+        <br><br>Number of Members: {{org.num_of_members}}
+        <br>Year Established: {{org.year_established}}
+        </p>
+
+    </div>
+    <div class="display-container d-flex flex-column justify-content-center align-content-center align-items-center">
+
+        <img src="/media/{{org.logo}}" alt="Org Logo" class="org-logo-about">
+        <div class="logo-design"></div>
+
+    </div>
+</div>
+<br><br>
+<br><br>
+<div class="center">
+    <div class="events-div ">
+
+        <h2>Events</h2>
+    </div>
+</div>
+<div class="clearfix w-100">
+    {% if events.0 %}
+    <div class="div-oso-events  clearfix">
+        <div class="large-article-container-grid div-event-img clearfix">
+            <div class="large-article-container-flex  clearfix"><img src="/media/{{events.0.img_ID.img_src}}" alt="{{events.0.img_ID.img_src}}" class="large-article-img zoom"></div>
+            <div style="background-image: url('/media/{{events.0.img_ID.img_src}}')" class="blur fullwidth-large-background article-bg "></div>
+        </div>
+        <div class="div-oso-events-txt">
+            <h2 class="event-title">{{events.0.title}}</h2>
+            <p class="event-desc">{{events.0.description|truncatewords:50}}</p>
+            <a class="clearfix buttonlinks evlink" href="{% url 'org:view-edit-event' events.0.id%}">
+                <div class="btn-click-for-more">Click for more</div>
+            </a>
+        </div>
+
+    </div>
+    {% endif %} {% if events.1 %}
+    <div class="div-oso-events reverse clearfix">
+
+        <div class="div-oso-events-txt">
+            <h2 class="event-title">{{events.1.title}}</h2>
+            <p class="event-desc">{{events.1.description|truncatewords:50}}</p>
+            <a class="clearfix buttonlinks evlink" href="{% url 'org:view-edit-event' events.1.id%}">
+                <div class="btn-click-for-more">Click for more</div>
+            </a>
+        </div>
+        <div class="large-article-container-grid div-event-img clearfix">
+            <div class="large-article-container-flex  clearfix"><img src="/media/{{events.1.img_ID.img_src}}" alt="{{events.1.img_ID.img_src}}" class="large-article-img zoom"></div>
+            <div style="background-image: url('/media/{{events.1.img_ID.img_src}}')" class="blur fullwidth-large-background article-bg "></div>
+        </div>
+
+    </div>{% endif %} {% if events.2%}
+    <div class="div-oso-events  clearfix">
+        <div class="large-article-container-grid div-event-img clearfix">
+            <div class="large-article-container-flex  clearfix"><img src="/media/{{events.2.img_ID.img_src}}" alt="{{events.2.img_ID.img_src}}" class="large-article-img zoom"></div>
+            <div style="background-image: url('/media/{{events.2.img_ID.img_src}}')" class="blur fullwidth-large-background article-bg "></div>
+        </div>
+        <div class="div-oso-events-txt">
+            <h2 class="event-title">{{events.2.title}}</h2>
+            <p class="event-desc">{{events.2.description|truncatewords:50}}</p>
+            <a class="clearfix buttonlinks evlink" href="{% url 'org:view-edit-event' events.2.id%}">
+                <div class="btn-click-for-more">Click for more</div>
+            </a>
+        </div>
+
+    </div>
+    {% endif %} {% if not events%}
+    <p class="empty">No Upcoming Events. Add one now!</p>
+    {% endif %}
+    <div class="d-flex w-100 align-content-center justify-content-center">
+        <a href="{%url 'org:view-calendar'%}" class="evlink btn-click-for-more text-center buttonlinks w-25 m-5">
+            See More</a> <br>
+    </div>
+
+</div>
+
+{% endblock %}

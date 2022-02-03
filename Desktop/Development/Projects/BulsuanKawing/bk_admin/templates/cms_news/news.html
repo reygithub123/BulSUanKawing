@@ -1,0 +1,92 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}{% endblock %} {% block content%}
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>NEWS & UPDATES</h1>
+    </div>
+</div>
+<div class="clearfix">
+    <div class="biggerhalf clearfix space-around eventshalf">
+        <div class="search">
+            <form method="GET" action="{% url 'cms:view-news'%}" class="form-contain">
+
+                <input {% if searched %} value="{{searched}}" {%endif%}placeholder="Search News & Updates" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+                <input type="submit" value="Search" id="search-button">
+            </form>
+        </div>
+        {% if searched %}<br>
+        <div class="d-flex justify-content-center">
+
+            <input type="image" src="{% static 'images/reset_100px.png'%}" value="Reset" class="small-img-button shadowed-png-hover" onclick="location.href=`{% url 'cms:view-news'%}`" /></div> {%endif%}
+        <br>
+        <center>
+            <a href="{%url 'cms:view-add-news'%}" class="buttonlinks yellowbtn p-2">Add News</a>
+
+        </center>
+        <br><br>
+        <div class='news-container max-width  clearfix'>
+
+            {% if not news %}
+            <em class="empty">No Such News. Add at least one</em> {% endif %} {% for art in news %}
+            <div class="small-article clearfix">
+                <div class="small-article-container-grid clearfix">
+                    <div class="small-article-container-flex clearfix">
+
+                        <img src="/media/{{art.img_ID.img_src}}" alt="art.img_ID.img_src" class="small-article-img zoom">
+
+                    </div>
+
+                    <div style="background-image: url('/media/{{art.img_ID.img_src}}')" class="blur fullwidth-background article-bg clearfix"></div>
+
+
+                </div>
+                <div class="small-article-text ">
+                    <p class="small-article-title  article-title">
+                        <a href="{% url 'cms:view-edit-news' art.id%}">{{art.title}}</a>
+                    </p>
+                    <p>{{art.published}}</p>
+                    <div><input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{art.id}}')">
+                    </div>
+                </div>
+            </div> {% endfor %}
+
+        </div>
+
+        {% if news.has_other_pages %}
+        <div class="centercomponents max-width clearfix">
+            <ul class="pagination">
+                {% if news.has_previous %}
+                <li>
+                    <a href="?page={{ news.previous_page_number }}">
+                        <div class="pagedesigns">&laquo;</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% endif %} {% for i in news.paginator.page_range %} {% if news.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+                </li>
+                {% else %}
+                <li>
+                    <a href="?page={{ i }}">
+                        <div class="pagedesigns"> {{ i }} </div>
+                    </a>
+                </li>
+                {% endif %} {% endfor %} {% if news.has_next %}
+                <li>
+                    <a href="?page={{ news.next_page_number }}">
+                        <div class="pagedesigns">&raquo;</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% include 'cms_news/news-modal.html'%} {% endblock %}

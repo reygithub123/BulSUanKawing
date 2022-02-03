@@ -1,0 +1,69 @@
+{% extends 'base_landing.html' %} {% block content %}
+
+<div class="clearfix fixheight space-around">
+    <form method="POST" action="{% url 'landing:view-news'%}" class="form-contain">
+        {% csrf_token %}
+        <input placeholder="Search" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+        <input type="submit" value="Search" id="search-button">
+    </form>
+
+    <div class='events-container max-width  clearfix'>
+        {% for ann in news %}
+        <div class="small-article clearfix">
+            <div class="small-article-container-grid clearfix">
+                <div class="small-article-container-flex clearfix">
+
+                    <img src="/media/{{ann.img_ID.img_src}}" alt="ann.img_ID.img_src" class="small-article-img zoom">
+
+                </div>
+
+                <div style="background-image: url('/media/{{ann.img_ID.img_src}}')" class="blur fullwidth-background article-bg clearfix"></div>
+
+
+            </div>
+            <div class="small-article-text ">
+                <p class="small-article-title">
+                    <a href="/news/{{ann.id}}">{{ann.title}}</a>
+                </p>
+
+
+            </div>
+        </div> {% endfor %}
+
+    </div>
+
+    {% if news.has_other_pages %}
+    <div class="centercomponents max-width clearfix">
+        <ul class="pagination">
+            {% if news.has_previous %}
+            <li>
+                <a href="?page={{ news.previous_page_number }}">
+                    <div class="pagedesigns">&laquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+            {% endif %} {% for i in news.paginator.page_range %} {% if news.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+            </li>
+            {% else %}
+            <li>
+                <a href="?page={{ i }}">
+                    <div class="pagedesigns"> {{ i }} </div>
+                </a>
+            </li>
+            {% endif %} {% endfor %} {% if news.has_next %}
+            <li>
+                <a href="?page={{ news.next_page_number }}">
+                    <div class="pagedesigns">&raquo;</div>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

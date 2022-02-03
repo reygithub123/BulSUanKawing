@@ -1,0 +1,140 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}{% endblock %} {% block content%}
+
+
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>OFFICE</h1>
+    </div>
+</div>
+
+
+<div class="container-fluid officers-container">
+
+    <div class="oso-officers-txt text-center">
+        <h2>The<br>{{info.office_name}} <br>({{info.name_acronym}})</h2>
+        <a href="{% url 'cms:view-add-officer'%}" class="yellowbtn buttonlinks p-2">Add Officer</a>
+
+    </div>
+    <br><br> {% if head %}
+    <div class="centercomponents clearfix">
+        {% for officer in head %}
+
+        <div class="officer-icon-container clearfix">
+            <a href="{% url 'cms:view-edit-officer' officer.id%}" class='color-link-bl d-block'>
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+
+                    <input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{officer.id}}')">
+                </div>
+            </a>
+        </div>
+
+        {% endfor %}
+    </div> {%endif%} {% if leaders %}<br>
+    <br>
+    <div class="centercomponents clearfix">{% for officer in leaders %}
+        <hr class='line-breaker'>
+
+        <div class="officer-icon-container clearfix">
+            <a href="{% url 'cms:view-edit-officer' officer.id%}" class='color-link-bl d-block'>
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+
+                    <input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{officer.id}}')">
+                </div>
+            </a>
+        </div>
+        {% endfor %} </div>{%endif%} {% if primary %}<br>
+    <br>
+    <br>
+    <div class="centercomponents clearfix">{% for officer in primary %}
+        <div class="officer-icon-container clearfix">
+            <a href="{% url 'cms:view-edit-officer' officer.id%}" class='color-link-bl d-block'>
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+
+                    <input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{officer.id}}')">
+                </div>
+            </a>
+        </div>
+        {% endfor %} </div>{%endif%} {% if secondary %}<br>
+
+    <br>
+    <br>
+    <div class="centercomponents clearfix">{% for officer in secondary %}
+
+        <div class="officer-icon-container clearfix">
+            <a href="{% url 'cms:view-edit-officer' officer.id%}" class='color-link-bl d-block'>
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+
+                    <input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{officer.id}}')">
+                </div>
+            </a>
+        </div>
+        {% endfor %} </div>{%endif%} {% if others %}<br>
+    <br>
+    <br>
+    <div class="centercomponentsgrid clearfix">{% for officer in others %}
+
+        <div class="officer-icon-container clearfix">
+            <a href="{% url 'cms:view-edit-officer' officer.id%}" class='color-link-bl d-block'>
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+
+                    <input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{officer.id}}')">
+                </div>
+            </a>
+        </div>
+        {% endfor %}</div> {%endif%}
+
+</div>
+<style>
+    .officer-icon-container {
+        width: 23%;
+        min-width: 250px;
+        height: 230px;
+        padding: 10px;
+        margin-top: 1%;
+        margin-right: 1%;
+        margin-left: 1%;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: lightgrey 2px 3px 4px;
+        display: inline
+    }
+    
+    .officer-icon-container:hover {
+        box-shadow: rgb(133, 133, 133) 2px 3px 4px;
+    }
+    
+    .img1 {
+        width: 40%;
+        image-rendering: auto;
+        aspect-ratio: 1/1;
+        text-align: center;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: lightgrey 5px 5px 5px;
+    }
+    
+    .img-label-container {
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+</style>
+{% include 'cms_officers/off-modal.html'%} {% endblock %}

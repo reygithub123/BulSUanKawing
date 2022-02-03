@@ -1,0 +1,113 @@
+{%extends 'base_organization.html'%} {% load static %}{% block content %}
+
+<div class="center">
+    {% if accountform.errors %} {% for field in accountform %} {% for error in field.errors %}
+    <div class="error alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %} {% endfor %} {% endif %} <br>
+    <br> {% if messages %}
+    <ul class="messages w-75">
+        {% for message in messages %} {{ message|safe }} {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<div class="grid-container">
+    <div class="left-grid-container">
+        <div class="img-upload-btn-container">
+            <form method="POST" action="{% url 'org:profile-upload'%}" id="upload-profile-image-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="actual-btn" class="img-upload-btn-label "> {%if org.logo %}<img src= "/media/{{org.logo}}" class ="prof-logo">{% else %} &#43;{%endif%} </label> {{orgform.logo}}
+            </form>
+        </div>
+        <div class="setting-anchor-container">
+            <div class="center">
+                <button type="submit" form="upload-profile-image-form" class="whitebutton" id="upload-img">Upload</button></div>
+            <div class="profile-setting-btn-container">
+                <button class="profile-setting-btn" onclick="showProfileSetting()">Profile Setting</button>
+            </div>
+            <div class="account-setting-btn-container">
+                <button class="account-setting-btn" onclick="showAccountSetting()">Account Setting</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-grid-container">
+        <!--Profile Setting-->
+        <div class="profile-setting" id="profile-setting">
+
+            <h2><strong>Profile Setting</strong> </h2>
+
+            <form method="POST" action="{%url 'org:profile-update'%}">
+                {% csrf_token %}
+                <div class="name-textfield-container">
+                    {{orgeditform.name}}
+                </div>
+                <div class="acronym-textfield-container">
+                    {{orgeditform.acronym}}
+                </div>
+                <div class=" num-of-members-textfield-container ">
+                    {{orgeditform.num_of_members}}
+                </div>
+                <div class="year-founded-textfield-container">
+                    {{orgeditform.year_established}}
+                </div>
+                <div class=" save-btn-container ">
+                    <input type="submit" id="save-btn " class="submitbtn w-75 " value="Save ">
+                </div>
+            </form>
+        </div>
+        <!--Account Setting-->
+        <div class="account-setting " id="account-setting">
+            <h2><strong>Account Setting</strong></h2>
+            <form method="POST" action="{%url 'org:account-update'%}">
+                {% csrf_token %} {{accountform.username}} <br><br>{{accountform.email}}
+                <br>
+                <br>
+                <input type="submit" id="save-btn " class="submitbtn w-75 " value="Save ">
+            </form>
+            <br>
+
+            <div>You can change your password<a href="{%url 'org:password-update'%}" class=" "> here.</a></div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(e) {
+        $("#profile-setting").css('display', 'block')
+        $("#upload-img").css('display', 'none')
+    })
+
+    function showProfileSetting() {
+        $("#profile-setting").css('display', 'block')
+        $("#account-setting").css('display', 'none')
+
+    }
+
+    function showAccountSetting() {
+        $("#profile-setting").css('display', 'none')
+        $("#account-setting").css('display', 'block')
+
+    }
+
+    function changeImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.img-upload-btn-label').html(" ")
+                $(".img-upload-btn-label ").css('background-image', 'url(" ' + e.target.result + ' ")');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        $("#upload-img ").css('display', 'block')
+    }
+</script>
+
+{% endblock %}

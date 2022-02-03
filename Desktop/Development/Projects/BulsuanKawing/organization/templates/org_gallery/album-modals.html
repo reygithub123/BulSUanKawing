@@ -1,0 +1,153 @@
+<script>
+    $(document).ready(check())
+
+    function check() {
+
+        if ($('.imagecheck').is(":checked")) {
+            $('.checknav').removeClass('hidden')
+        } else {
+            $('.checknav').addClass('hidden')
+        }
+    }
+
+    function uncheck() {
+        if ($('.imagecheck').is(":checked")) {
+            $('.imagecheck').prop('checked', false)
+            check()
+        }
+    }
+    $(document).on("click", "#close", function(e) {
+        e.preventDefault();
+        var $popup = $("#popup");
+        $popup.modal("hide");
+        $(".modal-content").html("Loading...");
+
+    });
+    $(document).on("change", ".imagecheck", function(e) {
+        check()
+    })
+
+    function open_rename() {
+
+        $.get('/user/gallery/{{album.id}}').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#renamealbumform');
+            $(".modal-content").html(mainbar);
+            $("#albumname").val('{{album.name}}')
+            $("#albumid").val('{{album.id}}')
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+
+    }
+
+    $(document).on("submit", "#formrenamealbum", function(e) {
+        e.preventDefault();
+
+        $("#submitbtn").attr('disabled', true);
+        id = $("#albumid").val()
+        name = $("#albumname").val()
+
+        $.ajax({
+            type: "POST",
+            url: "/user/gallery/{{album.id}}/rename",
+            data: {
+                id: id,
+                name: name,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(d) {
+
+                $.get('/user/gallery/{{album.id}}').then(function(html) {
+                    // Success response
+                    mainbar = $(html).find('#albumtitle');
+                    $("#albumtitle").html(mainbar.text());
+
+                    var $popup = $("#popup");
+                    $popup.modal("hide");
+                    $(".modal-content").html("Loading...");
+
+                    $("#submitbtn").removeAttr('disabled');
+
+                }, function() {
+                    // Error response
+                    document.write('Access denied');
+                }, 1000);
+
+
+            }
+        });
+
+
+    });
+
+    function open_delete() {
+        var numberOfChecked = $('.imagecheck:checked').length;
+
+        $.get('/user/gallery/{{album.id}}').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#deleteimgform');
+            $(".modal-content").html(mainbar.html());
+            $("#count").text(numberOfChecked)
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+    }
+</script>
+<div id="popup" class="modal " role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            Loading...
+        </div>
+    </div>
+</div>
+<div class="hidden">
+    <!--rename album-->
+    <div id="renamealbumform" class="modal-content">
+
+        <div class="modal-body">
+            <div>
+                Rename your Document Title:
+            </div>
+            <form action="" id="formrenamealbum">
+                {% csrf_token %}
+                <input type="hidden" id="albumid">
+                <input type="text" class="standard-field" id="albumname">
+
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <input id="submitbtn" type="submit" class="submitbtn" value="Confirm" form="formrenamealbum" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Cancel
+        </button>
+        </div>
+
+    </div>
+    <!--delete img-->
+    <div id="deleteimgform" class="modal-content">
+
+        <div class="modal-body">
+            <div>
+                Are you sure you want to delete
+                <p id="count" class="d-inline "></p> image/s?
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input id="submitbtn" class="submitbtn" type="submit" value="Yes" form="del-images" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Cancel
+        </button>
+        </div>
+
+    </div>
+</div>

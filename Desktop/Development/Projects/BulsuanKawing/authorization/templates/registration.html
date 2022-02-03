@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign-up|BulSUan Kawing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/loginstyle.css' %}?version=5">
+
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="main">
+            <div class="content-container">
+                <div class="login-logo-container">
+                    <img src="{% static 'images/osologo.png'%}" class="osologo">
+                </div>
+
+                <div class="white-box">
+                    <br>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="basic-information">
+                            <h2 class="heading2-login">Register</h2>
+                            <br>
+                            <label for="username" class="text-label">Username</label><br> {{ form.username }}
+
+                            <br>
+
+                            <label for="email" class="text-label">Email</label><br> {{ form.email }}
+
+                            <br>
+
+                            <label for="password1" class="text-label">Password</label><br> {{ form.password1 }}
+
+                            <br>
+
+                            <label for="password2" class="text-label">Confirm Password</label>
+                            <br>{{ form.password2 }} {{orgform.state}}
+                            <br> {{form.errors}}<br>
+                            <div class="back-next-button">
+                                <button type="submit" class="nav-buttons register " value="register ">Register</button>
+                            </div>
+                            <p class="p-question">Already have an account?
+                                <a href="/accounts/login/" class="register-link">Sign in</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <img src="{% static 'images/wave.png'%}" class="img-wave">
+
+
+        <!--
+                <label for="org-name" class="text-label">Organization Name:</label>
+                <input type="text" class="fields" name="org-name" id="org-name">
+
+                <br>
+
+                <label for="org-type" class="text-label">Type of Organization</label>
+                <select name="org-type" id="org-type">
+                        <option value=""></option>
+                        <option value="university-wide">University Wide</option>
+                        <option value="college-based">College Based</option>
+                    </select>
+
+                <br>
+                <div class="back-next-button">
+                    <button class="nav-buttons">&#8592</button>
+                                <button class="nav-buttons">&#8594</button>
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                        <div class="credentials">
+                            <label for="by-laws" class="text-label upload-file-label" id="by-laws-label">Upload By Laws File</label>
+                            <input type="file" class="files" name="by-laws" id="by-laws" placeholder="upload">
+
+                            <br>
+
+                            <label for="org-logo" class="text-label upload-file-label">Upload Organizational Logo</label>
+                            <input type="file" class="files" name="org-logo" id="org-logo">
+
+                            <br>
+
+                            <label for="year-established" class="text-label">Year Established</label>
+                            <input type="number" class="fields" name=" name=" year-established " id="year-established ">
+                
+                <br> 
+    
+                    <div class="back-submit-button "> 
+                        <button class="nav-buttons ">&#8592</button>
+                        <input type="submit " class="nav-buttons register " value="register ">
+                    </div>
+                </div>
+            </form>
+    
+            <div class="success-prompt-container ">
+                <p>SUCCESSFULLY<br>REGISTERED!</p>
+                <div>
+                    <button class="continue-button ">Continue</button>
+                </div>
+            <br>    
+    
+            
+            </div>-->
+    </div>
+    </div>
+
+
+</body>

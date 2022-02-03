@@ -1,0 +1,10 @@
+{% extends 'org/cal/base.html' %} {% block content %}
+<div class="biggerhalf">
+
+
+    <div class="spacearound10 clearfix">
+        <a class=" btn left previousbutton" href="/organizations/{{org_id}}/calendar?{{ prev_month }}">
+            <p class="arrowkeys"> &#8592; </p> Previous Month </a>
+        <a class=" btn right nextbutton" href="/organizations/{{org_id}}/calendar?{{ next_month }}">  Next Month <p class="arrowkeys">&#8594;</p></a>
+    </div> {{ calendar }} {% endblock %}...............................
+</div>

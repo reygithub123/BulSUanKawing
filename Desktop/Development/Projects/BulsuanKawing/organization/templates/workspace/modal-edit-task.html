@@ -1,0 +1,41 @@
+<div class="hidden" style="display:none">
+    <div id="edittaskform" class="modal-content">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div>
+                    <form id="formedittask" method="POST" action="/user/workspace/{{work.id}}/add">
+                        {% csrf_token %}
+                        <input type="hidden" value={{task.id}} id="task_id">
+                        <p>Name of Task<br>{{taskform.name}}</p>
+                        <p>Description (Optional):<br>{{taskform.description}}</p>
+                        <div class="date-error-div">
+                            <p class="date-error-text"></p>
+                            <p>Time Start: {{taskform.time_begin}}</p>
+                            <p>Time End: {{taskform.time_end}}</p>
+                        </div>
+                        <p>Status:
+                            <select name="state" id="id_state">
+                    {% for state in states%}
+                            
+                        {% if state.id == initialstate%}
+                            <option value="{state.id}" selected >{{state.name}}</option>
+                        {% else %}
+                            <option value="{state.id}" >{{state.name}}</option>
+                        {% endif %}
+                    {% endfor %}
+                  </select> </p>
+                        <br>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="submitbtn" value="Save Task" form="formedittask" />
+
+                <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Close
+            </button>
+            </div>
+        </div>
+    </div>
+
+</div>

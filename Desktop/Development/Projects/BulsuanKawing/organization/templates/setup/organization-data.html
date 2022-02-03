@@ -1,0 +1,115 @@
+ {%extends 'setup/base.html'%} {% load static %} {% block content %}
+
+
+<div class="main-container">
+
+    <div class="top">
+        <img src="{% static '/images/top-design.png'%}" alt="Top Design" class="top-design">
+    </div>
+
+    <div class="center">
+        <h1>Account Setup</h1>
+
+    </div>
+    <div class="orgformcontainer">
+        <form action="." method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="logo-btn-div">
+
+                <div class="upload-btn-container">
+
+
+                    {{orgform.logo}}
+
+                    <label for="actual-btn" class="upload_image" style=" display:flex; align-items: center; "><i class="fa fa-plus fa-2x" aria-hidden="true"></i></label>
+
+                </div>
+                <div class="logotxt-container">
+                    <h3>Logo</h3>
+                </div>
+
+
+
+            </div>
+
+            <div class="name-txtfield-container">
+                <div>
+                    <p class="inputlabeltxt">Name:</p>
+                </div>
+                <div>
+                    {{orgform.name}}
+                </div>
+
+            </div>
+
+            <div class="acronym-txtfield-container">
+
+                <p class="inputlabeltxt">Acronym:</p>
+
+                {{orgform.acronym}}
+
+
+            </div>
+
+            <div class="number-of-members-txtfield-container">
+
+                <p class="inputlabeltxt">Number of Members:</p>
+
+                {{orgform.num_of_members}}
+
+
+            </div>
+
+
+            <div class="year-founded-txtfield-container">
+
+                <p class="inputlabeltxt">Year Founded:</p>
+
+                {{orgform.year_established}}
+
+
+            </div>
+
+            <div class="bylawstxt-btn-div">
+                <div class="inputlabeltxt">
+                    <p>Upload your by-laws:</p>
+                </div>
+
+                <div class="bylaws-btn-div-container">
+
+                    {{orgform.by_laws_src}}
+
+                    <label for="bylaws-btn" class="choose-file">Choose File</label>
+                    <p class="source"></p>
+                </div>
+
+            </div>
+            <br>
+            <div class="submit-btn-container">
+                <button class="submit-btn">Submit  </button>
+
+
+            </div>
+        </form>
+    </div>
+    <script>
+        function changeImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('.upload_image').html("")
+                    $(".upload_image").css('background-image', 'url("' + e.target.result + '")');
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+        $(document).on('change', '#bylaws-btn', function(e) {
+            var name = e.target.files[0].name;
+            $(".source").text(name)
+        })
+    </script>
+    {%endblock%}

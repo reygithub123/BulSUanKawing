@@ -1,0 +1,54 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+<link rel="stylesheet" href="{% static 'css/documents.css' %}" />
+<link rel="stylesheet" href="{% static 'css/documents-submitted.css' %}" />{%endblock%}{% block content %}
+
+
+<div class="space-around">
+    <br> {% if messages %}
+    <ul class="messages w-75">
+        {% for message in messages %} {{ message|safe }} {% endfor %}
+    </ul>
+    {% endif %}
+    <br>
+    <a href="{% url 'cms:view-org-documents' current_org.id%}">Go Back</a>
+    <h2 id="doctitle" class="document-title ">{{document.name}}</h2>
+    <p>{{document.state}}</p>
+</div>
+
+<hr> {% if not document.state == approved%}
+<div class="space-around">
+    <br><br> {% csrf_token %}
+    <form class="d-inline" action="{% url 'cms:receive-document' current_org.id document.id %}" method="post">
+        {% csrf_token %}
+        <button class="yellowbutton smallfontbtn buttonlinks" type="submit" id="receive">Receive</button>
+    </form>
+
+    <button class="bluebutton  smallfontbtn" onclick="open_return()">Return</button>
+
+
+</div>
+{% endif %}
+<div class="documentslist">
+
+    {%for doc in files%}
+    <div class="container">
+
+        <div class="document-div">
+            <p>{{doc.name}}</p>
+            <div class="btn-div">
+                <a href="/media/{{doc.file}}" target=”_blank” class=" yellowbutton buttonlinks"> View </a>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <br> {% endfor %}
+
+</div>
+
+
+<script>
+</script>
+{% include 'cms_docs/document-modals.html'%} {% endblock %}

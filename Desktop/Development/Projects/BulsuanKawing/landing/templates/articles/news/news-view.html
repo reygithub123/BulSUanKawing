@@ -1,0 +1,25 @@
+{% extends 'base_landing.html'%}{% load static %} {% block content%}
+
+<div class="space-around fixheight clearfix event-container">
+    <h1>{{news.title}}</h1>
+    <p class="subtitle">{{news.published.date}}
+
+        <hr id="line">
+        <div class="img-container">
+            <img src="/media/{{news.img_ID.img_src}}" alt="OSO Image" class="img-sample">
+
+        </div>
+        <div class="text-container">
+
+            <div class="p-container">
+                <p>{{news.description}}</p>
+                <br>
+                <br>
+                <p>Modified: {{news.last_modified}}</p>
+                <p>Published: {{news.published}}</p>
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}

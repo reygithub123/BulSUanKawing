@@ -1,0 +1,176 @@
+.background {
+    background-color: lightgrey;
+    opacity: .5;
+    position: fixed;
+    width: 100%;
+    height: 5000px;
+    z-index: 1;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    z-index: -2;
+}
+
+#oso-logo {
+    margin-top: 20px;
+}
+
+.logo-container {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-color: #FFD700;
+}
+
+#sign-up {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+.main-container {
+    z-index: 1000;
+    width: 30%;
+    min-width: 380px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5%;
+    position: fixed;
+}
+
+.basic-information {
+    text-align: right;
+}
+
+.basic-information input {
+    margin-top: 15px;
+    margin: 15px 10% 5px 5px;
+    border: solid black 1px;
+}
+
+.credentials {
+    text-align: right;
+}
+
+#org-name {
+    margin-top: 15px;
+}
+
+#org-type {
+    margin-top: 15px;
+    width: 40%;
+    height: 20%;
+    margin-right: 20%;
+}
+
+.back-next-button {
+    margin-top: 15px;
+}
+
+#year-established {
+    margin-top: 10px;
+}
+
+#org-logo {
+    margin-top: 15px;
+}
+
+.back-submit-button {
+    margin: 15px;
+}
+
+.text-label {
+    font-size: 14px;
+}
+
+.fields {
+    width: 40%;
+    height: 20%;
+    margin-right: 20%;
+}
+
+.nav-buttons {
+    width: 22%;
+    border: solid black 1px;
+    margin-right: 20%;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+.nav-buttons:hover {
+    background-color: white;
+    color: black;
+}
+
+.files {
+    width: 26%;
+    background-color: white;
+    color: black;
+    display: none;
+}
+
+.files:hover {
+    background-color: black;
+    color: white;
+}
+
+.upload-file-label {
+    border: 1px solid black;
+    padding: 2%;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    margin-right: 20%;
+    width: 60%;
+    text-align: center;
+}
+
+.upload-file-label:hover {
+    background-color: black;
+    color: white;
+}
+
+.register {
+    font-size: 16px;
+    padding: 5px;
+    width: 50%;
+}
+
+.success-prompt-container {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    background-color: #FFD700;
+    margin-top: 5%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    height: 130px;
+}
+
+.continue-button {
+    width: 23%;
+    padding: 2px;
+    border-radius: 20px;
+    background-color: #B1B1B1;
+    color: black;
+    font-size: 14px;
+    border: none;
+    margin-top: 5px;
+}
+
+.continue-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.p-question {
+    text-align: center;
+}

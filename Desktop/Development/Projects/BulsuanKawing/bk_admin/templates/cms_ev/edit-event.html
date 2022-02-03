@@ -1,0 +1,63 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}{% endblock %} {% block content%}
+<div class="clearfix">
+    <div class="space-around">
+        <h2 id="doctitle" class="document-title ">{{event.title}}</h2>
+    </div>
+    <hr>
+    <div class="p-3 w-100 d-flex align-content-lg-stretch justify-content-center w-100 ">
+        <div class="container">
+            {% if document %}
+
+            <p class="note">View submitted approval: </p>
+            <div>
+                <a href="{%url 'cms:view-document' currentorg.id document.id%}" class="bluebutton  buttonlinks">View Document</a>
+            </div>
+
+            <br> {% endif %}
+            <form method="POST" action="{% url 'cms:view-edit-event' event.id%}" enctype="multipart/form-data">
+                {% csrf_token %} {% if invalid%} {{errors|safe }}{% endif%}
+                <p class="d-inline">Title of Event:</p>
+                <p class="sublabel d-inline">(* Please avoid updating your event title much frequently)</p>
+                <p>{{eventform.title}}</p>
+                <div class="img-container">
+                    <p class="">Event Photo</p>
+                    <input type="file" name="img_src" class="generalfileupload" onchange="changeImage(this)" accept="image/*" id="id_img_src">
+
+                    <div class=" selected-image">
+
+                        <img src="/media/{{event.img_ID.img_src}}" class="upload-image "></div>
+                </div><br>
+
+                <div class="">
+                    <p>Event Start:<br> {{eventform.time_begin}}
+                        <br><br> Event End: <br>{{eventform.time_end}}
+                    </p><br>
+                    <p>Event Description:</p>
+                    <p>{{eventform.description}}</p>
+                </div>
+                <p>Event Status:*</p>
+                <p>{{eventform.state}}</p>
+                <p class="info">&#9432; Please indicate the event as <strong>OSOA</strong> if the event is from <strong>BulSU-OSOA</strong>; <em>avoid using APPROVED state</em> </p>
+                <button class="bluebutton" type="submit"> Proceed </button>
+                <a href="{% url 'cms:view-events'%}" class="redbutton buttonlinks">Cancel</a>
+
+                <br>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    function changeImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(".upload-image").attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+{% endblock %}

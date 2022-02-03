@@ -1,0 +1,131 @@
+<script>
+    $(document).on("click", "#close", function(e) {
+        e.preventDefault();
+        var $popup = $("#popup");
+        $popup.modal("hide");
+        $(".modal-content").html("Loading...");
+
+    });
+
+
+    function open_delete(id) {
+        $.get('/user/documents/').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#deletedocform');
+            $(".modal-content").html(mainbar);
+            $("#doc_id_delete").val(id)
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+
+    }
+    $(document).on("submit", "#formdeletedoc", function(e) {
+        e.preventDefault();
+
+        $("#submitbtn").attr('disabled', true);
+        doc_id = $("#doc_id_delete").val()
+
+        $.ajax({
+            type: "POST",
+            url: "/user/documents/delete",
+            data: {
+                id: doc_id,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(d) {
+
+                $.get('/user/documents/').then(function(html) {
+                    // Success response
+                    mainbar = $(html).find('.documentslist');
+                    $(".documentslist").html(mainbar.html());
+
+                    var $popup = $("#popup");
+                    $popup.modal("hide");
+                    $(".modal-content").html("Loading...");
+
+                    $("#submitbtn").removeAttr('disabled');
+
+                }, function() {
+                    // Error response
+                    document.write('Access denied');
+                }, 1000);
+
+
+            }
+        });
+
+
+    });
+
+
+    function open_submit() {
+        $.get('/user/documents/').then(function(html) {
+            // Success response
+            mainbar = $(html).find('#adddocumentform');
+            $(".modal-content").html(mainbar);
+        }, function() {
+            // Error response
+            document.write('Access denied');
+        });
+        var $popup = $("#popup");
+        $popup.modal("show");
+    }
+</script>
+<div id="popup" class="modal " role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            Loading...
+        </div>
+    </div>
+</div>
+
+<div class="hidden">
+
+    <!--delete doc-->
+    <div id="deletedocform" class="modal-content">
+
+        <div class="modal-body">
+            <form action="" id="formdeletedoc">
+                {% csrf_token %}
+                <input type="hidden" id="doc_id_delete">
+            </form>
+            <div>
+                Are you sure you want to delete this document? Your progress will be lost!
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input id="submitbtn" class="submitbtn" type="submit" value="Yes" form="formdeletedoc" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Cancel
+            </button>
+        </div>
+
+    </div>
+    <!--add doc-->
+    <div id="adddocumentform" class="modal-content">
+        <div class="modal-body">
+            <form method="POST" action="{% url 'org:view-submit-document'%}" id="adddocument">
+                {% csrf_token %}
+                <p>Name of your Document: *<br></p>
+                <input type="text" class="standard-field" max="100" name="name" placeholder="eg. 'Balangayan Event Approval'" required>
+                <br><br>
+                <p>Category: *</p>
+                <select id="dropdown" class="standard-field" name="category" required>
+                    {% for category in categories %}
+                        <option value="{{category.id}}" >{{category.name}}</option>
+                    {% endfor %}
+                    </select>
+                <br>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" value="Proceed" form="adddocument" class="submitbtn" />
+
+            <button type="button" id="close" class="cancelbtn" data-dismiss="modal">Close
+          </button>
+        </div>
+    </div>
+</div>

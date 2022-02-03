@@ -1,0 +1,89 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/cal/styles.css' %}">{% endblock %} {% block content%}
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>EVENTS</h1>
+    </div>
+</div>
+<div class="clearfix">
+    <div class="biggerhalf clearfix space-around eventshalf">
+        <div class="search">
+            <form method="GET" action="{% url 'cms:view-events'%}" class="form-contain">
+
+                <input placeholder="Search Event" required="" oninvalid="this.setCustomValidity('')" oninput="this.setCustomValidity('')" type="text" name="searched" id="search-input">
+                <input type="submit" value="Search" id="search-button">
+            </form>
+        </div>
+        {% if searched %}<br>
+        <div class="d-flex justify-content-center">
+
+            <input type="image" src="{% static 'images/reset_100px.png'%}" value="Reset" class="small-img-button shadowed-png-hover" onclick="location.href=`{% url 'cms:view-events'%}`" /></div> {%endif%}
+        <br>
+        <p class="notes">&#8505; <strong>Approved</strong> and <strong>Pending</strong> events are <em>not deletable</em> </p> <br>
+        <div class='events-container max-width  clearfix'>
+
+            {% if not events %}
+            <em class="empty">No Such Events</em> {% endif %} {% for event in events %}
+            <div class="small-article clearfix">
+                <div class="small-article-container-grid clearfix">
+                    <div class="small-article-container-flex clearfix">
+
+                        <img src="/media/{{event.img_ID.img_src}}" alt="event.img_ID.img_src" class="small-article-img zoom">
+
+                    </div>
+
+                    <div style="background-image: url('/media/{{event.img_ID.img_src}}')" class="blur fullwidth-background article-bg clearfix"></div>
+
+
+                </div>
+                <div class="small-article-text ">
+                    <p class="small-article-title  article-title">
+                        {{event.get_cms_edit_link|safe}}
+                    </p>
+                    <p>{{event.state}}</p>
+                    {% if not event.state == approved and not event.state == pending%}
+                    <div><input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{event.id}}')">
+                    </div>{% endif %}
+                </div>
+            </div> {% endfor %}
+
+        </div>
+
+        {% if events.has_other_pages %}
+        <div class="centercomponents max-width clearfix">
+            <ul class="pagination">
+                {% if events.has_previous %}
+                <li>
+                    <a href="?page={{ events.previous_page_number }}">
+                        <div class="pagedesigns">&laquo;</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% endif %} {% for i in events.paginator.page_range %} {% if events.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only"></span></span>
+                </li>
+                {% else %}
+                <li>
+                    <a href="?page={{ i }}">
+                        <div class="pagedesigns"> {{ i }} </div>
+                    </a>
+                </li>
+                {% endif %} {% endfor %} {% if events.has_next %}
+                <li>
+                    <a href="?page={{ events.next_page_number }}">
+                        <div class="pagedesigns">&raquo;</div>
+                    </a>
+                </li>
+                {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+</div>{% endblock %}

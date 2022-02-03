@@ -1,0 +1,123 @@
+{%extends 'about/base_about.html'%} {% load static %} {% block content %}
+
+<div class="main-container">
+    <div class="first-div">
+        <div class="center">
+            <div class="about-oso-container">
+                <h2 id="what-is-oso">What is<br> {{acronym}}?</h2>
+                <p>{{description|safe}}</p>
+            </div>
+            <div class="logo-container">
+
+                <img src="/media/{{logo}}" class="oso-logo-banner" alt="OSO Logo">
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mid-div">
+        <h2 class="oso-history">History of <br>{{acronym}}</h2>
+        <p class="history-desc">{{history|safe}}</p>
+    </div>
+
+    <div class="types-of-org">
+        <h2>Types of Organization</h2>
+        <p id="sub-text">There is a total of {{numoforg}} types of Organizations according to role, program, and function</p>
+    </div>
+
+    <div class="org-varieties">
+        {% for type in orgtypes%}
+        <div class="type clearfix">
+            <h5>{{type.name}}</h5>
+            <p>{{type.description}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="last-div  clearfix">
+        <div class="oso-officers-txt">
+            <h2>The<br>{{office_name}} <br>({{acronym}})</h2>
+        </div>
+        {% if head %}
+        <div class="centercomponents clearfix">
+            {% for officer in head %}
+
+            <div class="officer-icon-container clearfix">
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div> {%endif%} {% if leaders %}<br>
+        <hr class='line-breaker'> <br>
+        <div class="centercomponents clearfix">{% for officer in leaders %}
+
+
+            <div class="officer-icon-container clearfix">
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %} </div>{%endif%} {% if primary %}<br>
+        <hr class='line-breaker'> <br>
+        <div class="centercomponents clearfix">{% for officer in primary %}
+
+
+            <div class="officer-icon-container clearfix">
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %} </div>{%endif%} {% if secondary %}<br>
+        <hr class='line-breaker'> <br>
+        <div class="centercomponents clearfix">{% for officer in secondary %}
+
+            <div class="officer-icon-container clearfix">
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %} </div>{%endif%} {% if others %}<br>
+        <hr class='line-breaker'> <br>
+        <div class="centercomponentsgrid clearfix">{% for officer in others %}
+
+            <div class="officer-icon-container clearfix">
+                <img src="/media/{{officer.image}}" class="img1" alt="Officer Icon" name="img1">
+                <div class="img-label-container">
+                    <p class="label-bold">{{officer.name|slice:45}}{%if officer.name|length > 45 %} ...{% endif %}</p>
+                    <p class="sublabel">{{officer.position|slice:45}}{%if officer.position|length > 45 %}...{% endif %}</p>
+                </div>
+            </div>
+            {% endfor %}</div> {%endif%}
+
+    </div>
+    <div class="map-div">
+
+        <div class="map-txt">
+            <h2>{{acronym}} <br>Location</h2>
+            <p>
+                OSOA Office, Roxas Hall <br> Commercial Building, 16 Capitol Compound, Malolos, 3000 Bulacan
+
+
+            </p>
+        </div>
+        <!--The div element for the map -->
+        <div id="map"></div>
+
+        <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXrfLMe82HBvFKnt3KZef3pRnEKNARVEY&callback=initMap&libraries=&v=weekly" async></script>
+
+    </div>
+</div>
+{% endblock %}

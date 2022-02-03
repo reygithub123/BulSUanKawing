@@ -1,0 +1,43 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}{% endblock %} {% block content%}
+<div class="clearfix">
+    <div class="space-around">
+        <a href="{% url 'cms:view-news'%}">View News</a>
+        <h2 id="doctitle" class="document-title ">Add News</h2>
+    </div>
+    <hr>
+    <div class="p-3 w-100 d-flex align-content-lg-stretch justify-content-center w-100 ">
+        <div class="container">
+            <form method="POST" action="{% url 'cms:view-add-news'%}" enctype="multipart/form-data">
+                {% csrf_token %} {% if invalid%} {{errors|safe }}{% endif%} {%if messages %}{{messages|safe}}{%endif%}
+                <div class="img-container">
+                    <p class="">News Photo (Upload logo if there's none) *</p>
+                    {{addimg.img_src}}
+
+                    <div class=" selected-image">
+
+                        <img src="" class="upload-image "></div>
+                </div>
+                {{newsform.as_p}}
+                <button class="bluebutton" type="submit"> Proceed </button>
+                <a href="{% url 'cms:view-news'%}" class="redbutton buttonlinks">Cancel</a>
+
+                <br>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    function changeImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(".upload-image").attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{%extends 'base_organization.html'%} {% load static %}{% block content %}
+<div class="space-around">
+    <a href="{% url 'org:view-documents'%}">Go Back</a>
+    <h2 id="doctitle" class="document-title ">{{document.name}}</h2>
+    <p>{{document.state}}</p>
+</div>
+
+<hr> {% if not document.state == approved%}
+<div class="space-around">
+    <button class="bluebutton align-self-start smallfontbtn" onclick="event.preventDefault(); open_rename() ">Rename Document Title</button>
+    <br><br>
+    <form action="{% url 'org:view-upload-file' document.id%} " enctype="multipart/form-data" method="POST">
+        {% csrf_token %} {{uploadfile.file}}
+        <input type="submit" class="bluebutton smallfontbtn" value="Upload">
+    </form>
+
+
+</div>
+{% endif %}
+<div class="documentslist">
+
+    {%for doc in files%}
+    <div class="container">
+
+        <div class="document-div">
+            <p>{{doc.name}}</p>
+            <div class="btn-div">
+                <a href="/media/{{doc.file}}" target=”_blank” class=" yellowbutton buttonlinks"> View </a> {% if not document.state == approved%}
+                <input type="image" class="small-img-button shadowed-png-hover m-md-1" src="{% static '/images/edit_48px.png'%}" onclick="event.preventDefault(); open_change('{{doc.id}}')">
+
+                <input type="image" class="small-img-button shadowed-png-hover" src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{doc.id}}')"> {% endif %}
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <br> {% endfor %}
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+{%include 'org_documents/sdmodals.html'%} {% endblock%}

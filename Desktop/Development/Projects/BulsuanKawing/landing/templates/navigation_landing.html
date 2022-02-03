@@ -1,0 +1,48 @@
+{% load static %}
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/osoa/">About</a>
+    <a href="/organizations/">Search Organization</a>
+    <a href="/">Home</a>
+    <a href="/news/">News & Updates</a>
+    <a href="/calendar/">Events</a>
+    <a href="/gallery/">Gallery</a>
+    <a href="/bulsuankawing">BulSUan Kawing</a>
+    <a href="/accounts/login">Login</a>
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="sidenav-button">
+<span></span> <span></span> <span></span> </span>
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").classList.add("size");
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").classList.remove("size");
+    }
+</script>
+
+<div>
+    <div class="container-fluid box-blue">
+        <img src="/media/{{logo}}" class="oso-logo">
+        <img src="{% static 'images/BulSUanKawing-white_Chain_100px.png' %}" class="img-bulsuankawing-white">
+
+    </div>
+
+    <div class="container-fluid navigation-bar">
+
+        <label class="Txt-Oso">{{acronym}}</label>
+        <div class="navigation-buttons">
+            <a href="/" class="txt-home">Home</a> |
+            <a href="/osoa/" class="txt-about">About</a> |
+            <a href="{% url 'landing:search-org' %}" class="txt-search-organization">Search Organization</a>
+
+        </div>
+
+    </div>
+</div>

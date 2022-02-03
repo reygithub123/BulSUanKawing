@@ -1,0 +1,35 @@
+{% extends 'base_organization.html'%}{% load static %} {% block content%}
+<div class="banner-container clearfix">
+    <div class=" banner-img ">
+        <div class="trapezoid"></div>
+    </div>
+    <div class="title">
+        <h1>GALLERY</h1>
+    </div>
+</div>
+<br>
+<div class="d-flex w-100 align-items-center justify-content-center  " id="buttons-area">
+
+    <button class="bluebutton w-25 " onclick="event.preventDefault(); open_add()">Add Album</button>
+
+
+</div>
+<br>
+<div class="maximumheight banner-div  clearfix">
+    <br>
+    <div id="albumlist" class="shape-container clearfix">
+        {% if albums %} {% for album in albums %}
+        <div class="category-sh1 ">
+            <br>
+            <h2 class="album1-txt ellipsis">{{album.name}}</h2>
+            <a href="{% url 'org:view-album' album.id %}"> <button class="whitebutton ">View Album</button></a>
+            <br><input type="image" class=" small-img-button m-4 shadowed-png-hover " src="{% static '/images/del_48px.png'%}" onclick="event.preventDefault(); open_delete('{{album.id}}')">
+        </div>
+        {% endfor %} {% else %}
+        <p class="empty">No Albums Available, add at least one</p>
+
+        {% endif %}
+
+    </div>
+</div>
+{% include 'org_gallery/gal-modals.html'%} {% endblock %}

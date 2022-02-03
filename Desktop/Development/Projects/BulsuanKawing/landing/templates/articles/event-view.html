@@ -1,0 +1,26 @@
+{% extends 'base_landing.html'%}{% load static %} {% block content%}
+<div class="gridview fixheight clearfix">{% include 'articles/event-sidemenu.html'%}
+    <div class="biggerhalf event-container">
+        <h1>{{event.title}}</h1>
+        <p class="subtitle">{{event.time_begin.date}}
+            <br>{{event.src_ID}}</p>
+        <hr id="line">
+        <div class="img-container">
+            <img src="/media/{{event.img_ID.img_src}}" alt="OSO Image" class="img-sample">
+
+        </div>
+        <div class="text-container">
+
+            <div class="p-container">
+                <p>Event Start: {{event.time_begin}}
+                    <br> Event End: {{event.time_end}}
+
+
+                </p><br>
+                <p>{{event.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

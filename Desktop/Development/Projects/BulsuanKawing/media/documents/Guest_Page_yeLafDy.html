@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OSO</title>
+    <link rel="stylesheet" type="text/css" href="guestpage.css">
+    <link rel="stylesheet" type="text/css" href="registration.css">
+    <link rel="stylesheet" type="text/css" href="slidebar.css">
+    <script src='sample.js'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+    <body>
+       
+        <div id="sidebar">
+            <div class="toggle-btn" onclick ="show()">
+                <div class="toggle-box">
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>
+            </div>
+            <ul>
+                <a href="about.html" class="link-about"><li class="about">About</li></a>
+                <a href="search-organization.html"><li>Search Organization</li></a>
+                <a href="oso-officers.html"><li>OSO Officers</li></a>
+                <a href="bulsuankawing.html"><li>BulSUan Kawing</li></a>
+                <a href="login.html"><li>Login</li></a>
+            </ul>
+           </div>
+        <div class="center hidden">
+            
+    
+            <div class="background"></div>
+            <div class="main-container"> 
+                <div class="logo-container">
+                    <img src="osologo.png" class="mx-auto d-block" style="width:10%" alt="OSO Logo" id="oso-logo">
+                    <h2 id="sign-up">Sign Up</h2>
+                    </div>       
+                <form action="#">
+                    <div class="basic-information">
+                         
+                        <label for="username" class="text-label">Username</label>
+                        <input type="text" class="fields" name="username" id="username">
+                     
+                    <br> 
+                    
+                        <label for="email" class="text-label">Email</label>
+                        <input type="email" class="fields" name="email" id="email">
+        
+                    <br> 
+        
+                        <label for="password" class="text-label">Password</label>
+                        <input type="password" class="fields" name="password" id="password">
+                    
+                    <br> 
+                    
+                        <label for="confirm-password" class="text-label">Confirm Password</label>
+                        <input type="password" class="fields" name="confirm-password" id="confirm-password">
+        
+                    <br>
+        
+                        <div class="back-next-button">
+                            <!--<button class="nav-buttons">&#8592</button>-->
+                            <button class="nav-buttons">&#8594</button>
+                        </div>
+        
+                        <label for="org-name" class="text-label">Organization Name:</label>
+                        <input type="text" class="fields" name="org-name" id="org-name">
+        
+                    <br>
+        
+                        <label for="org-type" class="text-label">Type of Organization</label>
+                        <select name="org-type" id="org-type">
+                            <option value=""></option>
+                            <option value="university-wide">University Wide</option>
+                            <option value="college-based">College Based</option>
+                        </select>
+        
+                    <br>
+                        <div class="back-next-button">
+                            <button class="nav-buttons">&#8592</button>
+                            <button class="nav-buttons">&#8594</button>
+                        </div>
+                    
+                    </div>
+        
+                    <br>
+        
+                    <div class="credentials">
+                        <label for="by-laws" class="text-label upload-file-label" id="by-laws-label">Upload By Laws File</label>
+                        <input type="file" class="files" name="by-laws" id="by-laws" placeholder="upload">
+                    
+                    <br>
+                        
+                        <label for="org-logo" class="text-label upload-file-label">Upload Organizational Logo</label>
+                        <input type="file" class="files" name="org-logo" id="org-logo">
+                    
+                    <br>
+        
+                        <label for="year-established" class="text-label">Year Established</label>
+                        <input type="number" class="fields" name=" name="year-established" id="year-established">
+                    
+                    <br> 
+        
+                        <div class="back-submit-button"> 
+                            <button class="nav-buttons">&#8592</button>
+                            <input type="submit" class="nav-buttons register" value="register">
+                        </div>
+                    </div>
+                </form>
+        
+                <div class="success-prompt-container">
+                    <p>SUCCESSFULLY<br>REGISTERED!</p>
+                    <div>
+                        <button class="continue-button">Continue</button>
+                    </div>
+                <br>    
+        
+                
+                </div>
+            </div>
+        </div>
+    
+<div>
+<div class="container-fluid box-blue">
+    <img src="osologo.png" class="oso-logo">
+        <img src="BulSUanKawing-white-Resized.png" class="img-bulsuankawing-white">
+        
+    </div>
+        
+<div class="container-fluid navigation-bar">
+ 
+
+    
+    <label class="Txt-Oso">Office of the Student Organization</label>
+    <a href="About.html" class="txt-about">About</a>
+    <a href="search-organization.html" class="txt-search-organization">Search Organization</a>
+    <a href="Guest Page.html" class="txt-home">Home</a>
+</div>
+<div>
+    <h1 class="heading-oso">Office of the Student
+        <br> Organization</h1>
+        <div class="div-yellow"></div>
+        <pre class="pre-description">
+It refers to a collection of people, who are  
+involved in pursuing defined objectives. It can understood
+as a social system which compromises all formal human rel-
+ationship. The organization encompasses division of work.
+
+It refers to a collection of people, who are  
+involved in pursuing defined objectives. It can understood
+as a social system which compromises all formal human rel-
+ationship. The organization encompasses division of work.
+
+        </pre>
+    </div>
+        <div class="logo-right">
+    <img src="square-yellow-upper.png" class="square-yellow-upper">
+    <img src="square-gray-lower.png" class="square-gray-lower">
+
+
+    <img src="osologo.png" class="oso-logo-2">
+    </div><br><br><br>
+
+<h1 class="heading-upcoming-events">Upcoming Events</h1>
+<div class="upcoming-events-yellow-div"></div>
+
+<div class="img-upcoming-events"></div>
+<br>
+<div class="container-white">Announcements</div>
+<div class="white-box-announcement"></div>
+
+</div>
+</body>
+
+</html>

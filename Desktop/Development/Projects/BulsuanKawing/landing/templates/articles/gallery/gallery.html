@@ -1,0 +1,18 @@
+{% extends 'base_landing.html'%}{% load static %} {% block content%}
+
+<div class="maximumheight banner-div  clearfix">
+    <br>
+    <div class="shape-container clearfix">
+        {% if albums %} {% for album in albums %}
+        <div class="category-sh1 ">
+            <br>
+            <h2 class="album1-txt ">{{album.name}}</h2>
+            <a href="{% url 'landing:view-album' album.id %}"> <button class="btn-album1 ">View Album</button></a>
+        </div>
+        {% endfor %}{% else %}
+        <p class="empty">No Albums Available</p>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

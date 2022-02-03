@@ -1,0 +1,125 @@
+{% load static %}
+
+<div class="form-container clearfix">
+    <div class="contact-info">
+        <p class="contacts-title">Get In Touch</p>
+        <div class="contacts">
+            <img src="{%static 'images/mail_48px.png'%}" alt="" class="small-icons">
+            <a href="mailto:studentorg@bulsu.edu.ph">studentorg@bulsu.edu.ph</a> /
+            <a href="mailto:BulSUanKawing@gmail.com">BulSUanKawing@gmail.com</a>
+
+        </div>
+        <div class="contacts">
+            <img src="{%static 'images/phone_100px.png'%}" alt="" class="small-icons">
+            <p class="d-inline"><u>(044) 919 7800</u> loc.1077</p>
+        </div>
+        <div class="contacts">
+            <img src="{%static 'images/Location_100px.png'%}" alt="" class="small-icons">
+            <p class="d-inline">Brgy. Guinhawa, 3000 Malolos, Philippines</p>
+        </div>
+
+    </div>
+    <div class="formbackground clearfix">
+        <div>
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                <label for="email" class="email-label  labels">Email Address:</label>
+                <input type="email" name="email" id="email" class="email email-fields" placeholder="Your Email">
+                <label for="email" class="email-label  labels">Topic:</label>
+                <input type="text" name="topic" id="topic" class="topic email-fields" placeholder="What is it about?">
+                <label for="message-txtarea" class="message-label   labels">Message:</label>
+                <textarea name="message" id="message-txtarea" class="message-txtarea email-fields" placeholder="Your Message"></textarea>
+                <input type="submit" class="yellowbtn maxwidth" value="Send">
+
+            </form>
+        </div>
+
+    </div>
+
+</div>
+<style>
+    .form-container {
+        position: relative;
+        height: auto;
+        width: 100%;
+        float: left;
+        display: flex;
+    }
+    
+    .contact-info {
+        position: relative;
+        width: 30%;
+        padding: 5%;
+        font-family: 'Monterrat', sans-serif;
+    }
+    
+    .contacts-title {
+        font-weight: 600;
+        filter: drop-shadow(1px 1px 1px rgb(68, 68, 68));
+        font-size: 200%;
+        color: #ffd700;
+    }
+    
+    .contacts {
+        margin-bottom: 10px;
+    }
+    
+    .formbackground {
+        padding: 5%;
+        position: relative;
+        width: 70%;
+    }
+    
+    .formbackground::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url('/static/images/orange-pattern.jpg');
+        background-attachment: fixed;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .formbackground div {
+        position: relative;
+    }
+    
+    .message-txtarea {
+        height: 130px;
+        resize: none;
+    }
+    
+    .labels {
+        font-family: 'Monterrat', sans-serif;
+        font-weight: 600;
+        color: white;
+        filter: drop-shadow(2px 2px 2px black);
+        font-size: 120%;
+    }
+    
+    .email-fields {
+        background-color: white;
+        width: 100%;
+        border-radius: 10px;
+        font-family: 'Monterrat', sans-serif;
+        outline: none;
+        border: none;
+        padding: 10px;
+        margin: 5px 0;
+        filter: drop-shadow(2px 2px 2px black);
+    }
+    
+    @media screen and (max-width:860px) {
+        .formbackground,
+        .contact-info {
+            width: 100%
+        }
+        .form-container {
+            flex-direction: column-reverse;
+            height: auto;
+        }
+    }
+</style>

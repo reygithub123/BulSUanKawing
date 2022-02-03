@@ -1,0 +1,379 @@
+/*Containers*/
+
+.main-div-upcoming-events {
+    width: 100%;
+    float: left;
+}
+
+.div-bulsuankawing {
+    background-color: #00546A;
+    height: 500%;
+    width: 100%;
+    position: relative;
+}
+
+.welcome-div {
+    height: auto;
+    float: left;
+}
+
+.div-txt-info {
+    background-color: #f5d446;
+    width: 45%;
+    float: left;
+    margin: 5% 0 2% 3%;
+    height: 100%;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.div-txt-info hr {
+    width: 40%;
+    border: 2px solid rgb(43, 42, 42);
+    margin: auto
+}
+
+.heading-oso {
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    float: left;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    letter-spacing: 3px;
+}
+
+.p-description {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 0%;
+    float: left;
+}
+
+.logo-right {
+    height: auto;
+    width: 90%;
+    margin-left: 5%;
+    float: left;
+    margin-top: 7%;
+    min-width: 300px;
+    margin-bottom: 12%;
+}
+
+.square-yellow {
+    z-index: -1;
+}
+
+.square-gray {
+    margin: 25% 0 0 30%;
+    z-index: -1;
+}
+
+.oso-logo-2 {
+    width: 93%;
+    z-index: 1000;
+    margin: auto;
+}
+
+.responsive-logo-center {
+    float: left;
+    width: 45%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.upcoming-events-yellow-div {
+    background-color: #FFD700;
+    width: 70%;
+    padding: 15px 30px 15px;
+}
+
+.heading-upcoming-events {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-align: right;
+}
+
+.headevent {
+    max-height: 400px;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    overflow: hidden;
+    align-items: center;
+}
+
+.event1img-container {
+    position: absolute;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    margin: auto;
+    overflow: hidden;
+}
+
+.event1-img {
+    max-width: 100vw;
+    max-height: 400px;
+    height: inherit;
+}
+
+.event2-img {
+    max-width: 83%;
+    max-height: 360px;
+    height: inherit;
+}
+
+.div-event-img {
+    width: 50%;
+    float: left;
+    border-radius: 10px;
+}
+
+.div-oso-events {
+    width: 100%;
+    height: auto;
+    margin: 50px 0;
+    padding: 10px
+}
+
+.div-oso-events-txt {
+    float: left;
+    margin-bottom: 5%;
+    width: 50%;
+}
+
+.event-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.event-desc {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.btn-click-for-more {
+    background-color: #00546A;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #00546A;
+    padding: 5px;
+    text-decoration: none;
+    display: inline
+}
+
+.btn-click-for-more:hover {
+    background-color: white;
+    color: black;
+    transition: .5s;
+    border: 2px solid black;
+}
+
+.div-oso-events-txt1 {
+    float: left;
+    width: 50%;
+}
+
+.evlink {
+    margin: 5% 5%;
+}
+
+.div-event2 {
+    float: left;
+}
+
+.img-sail {
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+.heading-sail {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-align: left;
+}
+
+.txt-sail {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 7%;
+}
+
+.btn2-click-for-more {
+    background-color: #00546A;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid #00546A;
+    padding: 5px;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.btn2-click-for-more:hover {
+    background-color: white;
+    color: black;
+    transition: .5s;
+    border: 2px solid black;
+}
+
+.div-sail {
+    float: right;
+    margin-right: 5%;
+    margin-top: 10%;
+}
+
+
+/*ANNOUNCEMENT PART*/
+
+.announcements {
+    float: left;
+    padding-bottom: 2%;
+    width: 100%;
+}
+
+.announcement {
+    width: 22%;
+    background-color: white;
+    border-radius: 5px;
+    height: 180px;
+    float: left;
+    margin-right: 3%;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.announcements-txt {
+    color: #FFD700;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    font-style: italic;
+    height: 50px;
+    width: auto;
+    margin: 0 0 2% 10%;
+    padding: 0 5px;
+}
+
+.announcements-container {
+    background-color: #00546A;
+    box-shadow: 0px 0px 2px 2px #b6b6b6;
+    height: auto;
+    width: 90%;
+    border-radius: 15px;
+    padding: 7% 5%;
+}
+
+.announcements-center {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.div-img-announcement {
+    width: 100%;
+    height: 15vh;
+    justify-content: center;
+    display: grid;
+    overflow: hidden;
+}
+
+.annimg-container {
+    position: absolute;
+    width: 17%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    margin: auto;
+    overflow: hidden;
+}
+
+.announcement-img {
+    max-width: 85%;
+    max-height: 98px;
+}
+
+.announcementbg {
+    height: 100vh;
+    width: 100vh;
+    display: block;
+    background-position: center;
+    background-size: cover;
+}
+
+.announcement-txt {
+    float: left;
+    width: 96%;
+    margin-left: 2%;
+    height: 100px;
+    display: grid;
+}
+
+.announcement-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    height: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: darkslategrey;
+    text-align: center;
+}
+
+@media screen and (max-width: 850px) {
+    .div-txt-info {
+        width: 94%;
+    }
+    .responsive-logo-center {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .logo-right {
+        width: 30vw;
+        min-width: 300px;
+        display: none;
+    }
+    .main-div-upcoming-events {
+        width: 100%;
+    }
+    .div-oso-events-txt {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .div-event-img {
+        width: 100%;
+    }
+    .announcement {
+        width: 40%;
+        margin-left: 5%;
+    }
+    .annimg-container {
+        width: 32%;
+    }
+    .oso-logo-2 {
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .announcement {
+        width: 90%;
+    }
+    .annimg-container {
+        width: 42%;
+    }
+}

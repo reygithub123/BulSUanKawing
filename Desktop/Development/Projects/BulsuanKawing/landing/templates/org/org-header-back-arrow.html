@@ -1,0 +1,15 @@
+{% load static %}
+
+<div class="container-fluid header">
+    <button class="exit-button"><img src="{% static 'images/left_48px.png' %}" onclick="window.history.back();" ></button>
+
+</div>
+
+<div class="under-header clearfix">
+    <a href="{% url 'landing:view-homepage' %}" class="headlinks">Home</a> |
+    <a href="{% url 'landing:view-org' org.id %}" class="headlinks">{{org.acronym}}</a> |
+    <a href="/organizations/{{org.id}}/gallery" class="headlinks">Gallery</a> |
+    <a href="/organizations/{{org.id}}/calendar" class="headlinks">Calendar of Events</a>
+
+
+</div>

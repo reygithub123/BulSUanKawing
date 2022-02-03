@@ -1,0 +1,165 @@
+body {
+    overflow: hidden;
+    width: 100%;
+}
+
+.main {
+    display: grid;
+    place-items: center;
+    z-index: 1;
+}
+
+.content-container {
+    display: block;
+    width: 30%;
+    min-width: 300px;
+}
+
+.login-logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.osologo {
+    width: 30%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.white-box {
+    position: relative;
+    background-color: white;
+    padding-bottom: 20px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 1%;
+    box-shadow: lightgray 2px 2px 3px 3px;
+    z-index: 1;
+}
+
+.img-wave {
+    width: 100%;
+    margin-top: -5%;
+    object-fit: scale-down;
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+}
+
+.heading2-login {
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 800;
+    margin-top: 0%;
+    text-align: center;
+}
+
+.register {
+    background-color: #ffd700;
+    border: solid 2px #ffd700;
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 500;
+    color: black;
+    width: 80%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 1rem;
+    border-radius: 20px;
+    border-color: white;
+}
+
+.register:hover {
+    background-color: white;
+    color: black;
+    border-color: #ffd700;
+}
+
+.basic-information input {
+    background-color: white;
+    width: 60%;
+    margin-left: 5%;
+    border-radius: 7px;
+    border-width: thin;
+    width: 90%
+}
+
+.text-label {
+    color: black;
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 600;
+    margin-left: 5%;
+}
+
+.Txt-username {
+    color: black;
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 600;
+    margin-left: 5%;
+}
+
+.Textfield-Username {
+    background-color: white;
+    width: 60%;
+    margin-left: 5%;
+    border-radius: 7px;
+    border-width: thin;
+}
+
+.Txt-password {
+    color: black;
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 600;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.Textfield-Password {
+    background-color: white;
+    width: 60%;
+    margin-left: 5.5%;
+    margin-top: 2%;
+    border-radius: 7px;
+    border-width: thin;
+}
+
+.submit {
+    background-color: #ffd700;
+    border: solid 2px #ffd700;
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 500;
+    color: black;
+    width: 80%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 1rem;
+    border-radius: 20px;
+    border-color: white;
+}
+
+.submit:hover {
+    background-color: white;
+    color: black;
+    border-color: #ffd700;
+}
+
+.p-question {
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+}
+
+.register-link {
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+.register-link:hover {
+    color: #ffd700;
+}
+
+#messages {
+    text-align: center;
+    margin-top: 1rem;
+    color: rgb(197, 146, 18);
+}

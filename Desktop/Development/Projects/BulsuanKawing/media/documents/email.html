@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+    <style>
+        .form-container{
+            text-align: center;
+            margin-top: 5%;
+        }
+        .labels{
+            vertical-align: top;
+        }
+        .email-label{
+            font-family: 'Monterrat', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .email{
+            width: 35%;
+            height: 25px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        .message-container{
+            margin-top: 1%;
+            margin-right: 2%;
+        }
+        .message-label{
+            font-family: 'Monterrat', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .message-txtarea{
+            background-color: white;
+            font-family: 'Monterrat', sans-serif;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            width: 35%;
+            height: 250px;
+            resize: none;
+        }
+        .submit-btn-container{
+            margin-top: 1%;
+        }
+        .submit-btn{
+            font-family: 'Monterrat', sans-serif;
+            font-size: 1rem;
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            width: 15%;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .submit-btn:hover{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <form action="POST">
+        <div class="form-container">
+            <div class="email-container">
+                <label for="email" class="email-label labels">Email:</label>
+                <input type="email" name="email" id="email" class="email">
+            </div>
+
+            <div class="message-container">
+                <label for="message-txtarea" class="message-label labels">Message:</label>
+                <textarea name="message-txtarea" id="message-txtarea" class="message-txtarea"></textarea>
+            </div>
+
+            <div class="submit-btn-container">
+                <input type="submit" class="submit-btn" value="Send">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

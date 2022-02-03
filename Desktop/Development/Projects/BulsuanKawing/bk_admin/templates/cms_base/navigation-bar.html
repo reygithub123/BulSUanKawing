@@ -1,0 +1,52 @@
+{% load static %}
+
+<div class="container-fluid navigation-bar">
+    <img src="{% static '/images/BulSUanKawing-black_Chain_100px.png' %}" class="img-bulsuankawing-black">
+
+    <div class="navigation-buttons">
+
+        <div class="message-icon-container">
+            <a href="{%url 'cms:view-calendar'%}"><img src="{% static '/images/solid-black-cal.svg' %}" alt="Messaging" class="message-icon"></a>
+        </div>
+        <div class="line-separate"></div>
+        <div class="org-logo-container">
+            <a href="{%url 'cms:cms_land'%}">
+                <img src="/media/{{org.logo}}" alt="OSO" class="org-logo"></a>
+        </div>
+        <div class="org-text-container">
+            <p class="org-text">Hello, {{org.acronym}}!</p>
+        </div>
+        <div class="logout-icon-container">
+            <a href="{% url 'org:view-logout' %}"><img src="{% static '/images/logout-icon.png' %}" alt="Logout" class="logout-icon"></a>
+        </div>
+    </div>
+
+    <div id="cmssidenav" class="cmssidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{%url 'cms:cms_land'%}">Content Management</a>
+        <a href="{%url 'cms:view-pending-documents'%}">Documents</a>
+        <a href="{%url 'cms:view-calendar'%}">Events</a>
+        <a href="{%url 'cms:view-gallery'%}">Gallery</a>
+        <a href="{%url 'cms:view-news'%}">News</a>
+        <a href="{%url 'cms:view-officers'%}">Officers</a>
+        <a href="{%url 'cms:view-organizations'%}">Organizations</a>
+        <hr>
+        <a href="logout.html">Logout</a>
+
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="sidenav-button">
+        <span></span> <span></span> <span></span> </span>
+
+
+    <script>
+        function openNav() {
+            document.getElementById("cmssidenav").classList.add("size");
+        }
+
+        function closeNav() {
+            document.getElementById("cmssidenav").classList.remove("size");
+        }
+    </script>
+
+</div>

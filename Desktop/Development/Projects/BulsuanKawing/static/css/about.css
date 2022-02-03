@@ -1,0 +1,261 @@
+.main-container {
+    background-color: white;
+}
+
+.center {
+    width: 90%;
+}
+
+.first-div {
+    width: 100%;
+    padding: 50px;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container {
+    float: right;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('/static/images/orange-pattern.jpg');
+    background-attachment: fixed;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    filter: brightness(1.5);
+}
+
+.oso-logo-banner {
+    position: relative;
+    border: none;
+    width: 100%;
+    min-width: 200px;
+    max-width: 350px;
+    object-fit: contain;
+    -webkit-filter: drop-shadow(5px 5px 5px #222222);
+    filter: drop-shadow(5px 5px 5px #222222);
+}
+
+#what-is-oso {
+    font-size: 70px;
+    color: #FFD700;
+}
+
+.about-oso-container {
+    border: none;
+    width: 55%;
+    float: right;
+    margin-left: 5%;
+}
+
+.mid-div {
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-color: #e6e6e6;
+    padding: 5%;
+}
+
+.oso-history {
+    color: #00546A;
+    font-size: 70px;
+}
+
+.types-of-org {
+    width: 100%;
+    background-color: #00546A;
+    text-align: center;
+    padding: 50px;
+    color: white;
+}
+
+#sub-text {
+    font-size: 14px;
+}
+
+.org-varieties {
+    max-width: 100vw;
+    display: flex;
+    justify-content: center space-between;
+    flex-wrap: wrap;
+}
+
+.type {
+    width: 48vw;
+    min-width: 315px;
+    float: left;
+    text-align: center;
+    min-width: 400px;
+    padding: 20px;
+}
+
+#click-button {
+    text-decoration: none;
+    background-color: yellow;
+    color: black;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.last-div {
+    width: 100%;
+    text-align: center;
+    height: auto;
+    margin: 50px 0;
+    padding: 50px
+}
+
+.officer-icon-container {
+    width: 23%;
+    min-width: 250px;
+    height: 230px;
+    padding: 10px;
+    margin-top: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: lightgrey 2px 3px 4px;
+    display: inline
+}
+
+.officer-icon-container:hover {
+    box-shadow: rgb(133, 133, 133) 2px 3px 4px;
+}
+
+.img1 {
+    width: 40%;
+    image-rendering: auto;
+    aspect-ratio: 1/1;
+    text-align: center;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: lightgrey 5px 5px 5px;
+}
+
+.img-label-container {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+
+/*
+map css
+*/
+
+.map-txt {
+    margin-top: 50px 0;
+    text-align: center;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+    margin: 100px 0;
+}
+
+
+/*about bk*/
+
+.about-bulsuan-kawing {
+    height: 150px;
+    background-color: lightgray;
+    padding: 1.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-bulsuan-kawing h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 5vw;
+    color: #ffd700;
+    height: auto;
+}
+
+.developers-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 50px 0;
+}
+
+.developers-description div {
+    background-color: white;
+    box-shadow: lightgrey 0px 0px 4px 4px;
+    width: 60%;
+    height: auto;
+    padding-top: 1.5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1.5%;
+}
+
+.about-description {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.developers-description div h4 {
+    margin-top: 5%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.developers-description div p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.developers-description div li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+    .developers-description div {
+        width: 95%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .about-oso-container {
+        width: 100%;
+        text-align: center;
+    }
+    .logo-container {
+        width: 100%;
+        display: flex;
+        height: 400px;
+        justify-content: center;
+        align-items: center;
+    }
+    .oso-logo-banner {
+        width: 100%;
+    }
+    .type {
+        width: 100%;
+    }
+}

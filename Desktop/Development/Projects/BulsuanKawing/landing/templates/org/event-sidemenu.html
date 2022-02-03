@@ -1,0 +1,12 @@
+{% load static %}
+<div class="left-menu">
+    <a href="{% url 'landing:view-calendar' org_id%}" class="link">
+        <div>Calendar View</div>
+    </a>
+    <div class="breaker"><br> </div>
+    <p class="line-breaker"> | </p>
+    <a href="{% url 'landing:view-events' org_id%}" class="link">
+        <div>Events View</div>
+    </a>
+
+</div>

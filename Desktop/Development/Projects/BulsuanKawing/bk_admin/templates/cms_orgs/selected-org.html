@@ -1,0 +1,173 @@
+{%extends 'cms_base/base.html'%} {% load static %} {% block styles%}
+<link rel="stylesheet" href="{% static 'css/selected-organization.css' %}">
+<link rel="stylesheet" href="{% static 'css/search-organization.css' %}" />{% endblock %} {% block content%}
+
+
+<div class="logo-container">
+    <div>
+        <img src="/media/{{organization.logo}}" class="org-logo-swits">
+    </div>
+    <h1 class="org-name">{{organization.name}}<br>{% if organization.acronym %}({{organization.acronym}}) {% endif %}</h1>
+</div>
+
+<div class="text-details-div">
+    <br><br>Number of Members: {{organization.num_of_members}}
+    <br>Year Established: {{organization.year_established}}
+    <div class="d-flex flex-row w-100 align-stretch inmenu">
+        <a href="{% url 'cms:view-org-documents' organization.id%}" class="buttonbackgroundyl buttonmenu flex-1 centertext buttonlinks ">
+            Documents
+        </a>
+
+
+        <a href="{% url 'cms:view-org-events' organization.id %}" class=" buttonbackgroundyl buttonmenu flex-1  centertext  buttonlinks  ">
+            Events
+        </a>
+
+    </div>
+
+    <div class="text-start">
+        <br> {% if messages %} {{messages|safe}} {%endif%}
+        <h3>Verify {{organization.acronym}} through the following:</h3>
+        <p><strong>Step 1: </strong> Review the organization's By-laws. </p>
+        <a href="/media/{{organization.by_laws_src}}" target="_blank" class="buttonlinks bluebutton ">Download/View</a>
+        <br><br>
+        <p><strong>Step 2: </strong>Update its important details <em>(make sure the by-laws is valid):</em> </p>
+        <p class="info">&#9432; Go to BulSUan Kawing Django administrator to add data on the following fields</p>
+        <form action="" method="post" id="update">
+            {% csrf_token %}
+            <label for="orgtype">Type of Organization:</label>
+            <select class="standard-field" id="orgtype" name="orgtype">
+            {% for orgtype in orgtypes %}
+                <option value="{{orgtype.id}}" {% if organization.category.id == orgtype.id %}selected {%endif%}  >{{orgtype.name}}</option>
+                    
+            {% endfor %}
+                
+            </select>
+            <br>
+            <br>
+            <label for="program">Program:</label>
+            <select class="standard-field " id="program" name="program">
+                {% for program in programs %}
+                    <option value="{{program.id}}"  {% if organization.program.id == program.id %}selected{% else %} {%endif%} >{{program.name}} </option>
+                    
+                {% endfor %}
+                    
+            </select>
+            <br>
+
+            <p>Add Program <a href="/admin/organization/program/ " target="_blank ">here</a></p>
+
+            <label for="state">Status:</label>
+            <p class="info">&#9432; Validate Organization by choosing <strong>"Registered "</strong></p>
+            <select id="state" name="state" class="standard-field">
+                
+                <option value="p" {% if organization.state == 'p' %}selected {%endif%}>Pending</option>
+                <option value="r" {% if organization.state == 'r' %}selected {%endif%}>Registered</option>
+            </select>
+        </form><br>
+        <p><strong>Step 3: </strong>If things look perfect, submit: </p>
+        <button class="submitbtn" type="submit" form="update">Done</button>
+
+    </div>
+
+
+
+    <br>
+    <hr class="hr ">
+</div>
+<h2 class="h2-middle ">Upcoming Events</h2>
+<div class="upcoming-events-container ">
+
+    {% if events %} {% for event in events%}
+    <div class="medium-article clearfix ">
+        <div class="medium-article-container-grid ">
+            <div class="medium-article-container-flex zoom ">
+
+                <img src="/media/{{event.img_ID.img_src}} " alt="{{event.img_ID.img_src}} " class="medium-article-img ">
+
+            </div>
+
+        </div>
+        <div class="announcement-txt ">
+            <p class="announcement-title ">
+                {{ event.get_cms_edit_link | safe }}
+            </p>
+            <p class="sublabel ">{{event.time_begin}} to {{event.time_end}}</p>
+
+
+        </div>
+    </div>
+
+    {% endfor %} {%else%}
+    <p class="empty ">No Upcoming Events</p>
+    {% endif %}
+</div>
+<br><br>
+<script>
+    img_div = document.getElementsByClassName("medium-article-container-grid ");
+
+    img = document.getElementsByClassName("medium-article-img ")
+    for (let i = 0; i < 3; i++) {
+        rgb = getAverageRGB(img[i])
+        img_div[i].style.backgroundColor = 'rgb(' + [rgb.r, rgb.g, rgb.b].join(',') + ') ';
+
+
+    }
+
+    function getAverageRGB(imgEl) {
+
+        var blockSize = 5, // only visit every 5 pixels
+            defaultRGB = {
+                r: 0,
+                g: 0,
+                b: 0
+            }, // for non-supporting envs
+            canvas = document.createElement('canvas'),
+            context = canvas.getContext && canvas.getContext('2d'),
+            data, width, height,
+            i = -4,
+            length,
+            rgb = {
+                r: 0,
+                g: 0,
+                b: 0
+            },
+            count = 0;
+
+        if (!context) {
+            return defaultRGB;
+        }
+
+        height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
+        width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+
+        context.drawImage(imgEl, 0, 0);
+
+        try {
+            data = context.getImageData(0, 0, width, height);
+        } catch (e) {
+            /* security error, img on diff domain */
+            return defaultRGB;
+        }
+
+        length = data.data.length;
+
+        while ((i += blockSize * 4) < length) {
+            ++count;
+            rgb.r += data.data[i];
+            rgb.g += data.data[i + 1];
+            rgb.b += data.data[i + 2];
+        }
+
+        // ~~ used to floor values
+        rgb.r = ~~(rgb.r / count);
+        rgb.g = ~~(rgb.g / count);
+        rgb.b = ~~(rgb.b / count);
+
+        return rgb;
+
+    }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+footer {
+    width: 100%;
+    height: auto;
+    padding-bottom: 1%;
+    background-color: #f5d446;
+    float: left;
+    display: flex;
+    justify-content: center;
+    clear: both;
+}
+
+.footer-div {
+    text-align: center;
+    padding-top: 3%;
+}
+
+.footer-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #00546A;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.icon-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+.icon-div div img {
+    float: left;
+    width: 50%;
+}
+
+.icon-div div {
+    width: 5%;
+    display: flex;
+    justify-content: center;
+}
