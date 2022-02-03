@@ -1,0 +1,270 @@
+.top {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.top-design {
+    max-width: 500px;
+    z-index: -1;
+}
+
+.main-container {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+}
+
+.orgformcontainer {
+    width: 50%;
+    min-width: 380px;
+    align-self: center;
+}
+
+.center {
+    text-align: center;
+    width: 100%;
+}
+
+.center h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+.upload_image {
+    justify-content: center;
+    background-color: rgb(209, 209, 209);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    padding-top: 0.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    align-content: center;
+    color: black;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: rgb(43, 43, 43) 2px 2px 5px 1px;
+}
+
+.upload_image :hover {
+    background-color: #c7c7c7;
+    color: black;
+}
+
+.logo-btn-div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.logotxt-container h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+label {
+    background-color: rgb(209, 209, 209);
+    width: 100%;
+    height: 40px;
+    padding-top: 0.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+}
+
+label:hover {
+    background-color: #c7c7c7;
+    color: black;
+}
+
+.name-txtfield-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.inputlabeltxt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 0%;
+}
+
+.name-textfield {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.orgsetuptxtfield {
+    width: 100%;
+    height: 35px;
+    border: 1.5px solid black;
+    border-radius: 20px;
+    flex-direction: column;
+    padding: 0px 15px;
+}
+
+.acronym-txtfield-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.acronym-txt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.acronym-textfield {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.number-of-members-txtfield-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.num-members-txt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.num-members-textfield {
+    width: 100%;
+    height: 35px;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.year-founded-txtfield-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+.year-founded-txt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.year-founded-textfield {
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.bylaws-btn-div-container {
+    border-radius: 5px;
+}
+
+.bylawstxt-btn-div-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.bylaws-btn-div {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.bylawstxt-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.upload_file {
+    background-color: rgb(209, 209, 209);
+    width: 100%;
+    height: 40px;
+    padding-top: 0.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    margin-bottom: 2%;
+}
+
+.upload_file:hover {
+    background-color: #c7c7c7;
+    color: black;
+}
+
+.submit-btn-container {
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.submit-btn {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    background-color: black;
+    padding: .5%;
+    border: white;
+}
+
+.submit-btn:hover {
+    background-color: #ffd700;
+    color: black;
+}
+
+.wave {
+    float: left;
+    margin-top: -50%;
+}

@@ -1,0 +1,171 @@
+.arrowkeys {
+    font-size: 25px;
+    display: inline
+}
+
+.calendar {
+    width: 97%;
+    margin: auto;
+    font-size: 13px;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.calendar tr,
+.calendar td {
+    border: 2px solid #00546A;
+}
+
+.calendar th {
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar td {
+    width: 200px;
+    height: 100px;
+    padding: 20px 5px 0px 5px;
+}
+
+.eventtd a {
+    color: #ffd700;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.month {
+    font-size: 25px;
+}
+
+.date {
+    font-size: 16px;
+}
+
+.calendar ul {
+    height: 100%;
+    padding: 0;
+    list-style-type: none;
+}
+
+.calendar li {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    white-space: normal;
+    align-items: center;
+    text-align: center;
+    background-color: #00546A;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: #ffffff;
+    padding: 2px;
+}
+
+.calendar li img {
+    width: 30px;
+    max-height: 30px;
+}
+
+.calendar li a {
+    color: #ffffff;
+    text-overflow: clip;
+    width: 55%;
+    margin: 0 5%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.btn {
+    outline: none;
+    color: #00546A;
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+    border: 2px solid #00546A;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    height: 60px
+}
+
+.btn:hover {
+    background-color: #00546A;
+    color: #ffd700
+}
+
+.blbtncal {
+    outline: none;
+    color: #00546A;
+    background-color: transparent;
+    box-shadow: 0 0 0 0;
+    border: 2px solid #00546A;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    border-radius: 5px;
+    align-items: baseline;
+    padding: 5px 10px;
+}
+
+.blbtncal:hover {
+    background-color: #00546A;
+    color: #ffd700
+}
+
+.space-around {
+    padding: 15px;
+    height: auto;
+}
+
+.form {
+    margin: auto;
+}
+
+.form input,
+.form select,
+.form textarea {
+    border-radius: 5px;
+    border: 1px solid #17a2b8;
+    outline: none;
+    background: none;
+    padding: 5px;
+    width: 100%;
+}
+
+.month {
+    border: 1px solid #00546A;
+    background-color: #00546A;
+    color: white;
+    font-size: 50px;
+}
+
+.mon,
+.tue,
+.wed,
+.thu,
+.fri,
+.sat,
+.sun {
+    background-color: #ffd700;
+    color: black;
+}
+
+@media screen and (max-width:500px) {
+    li {
+        flex-direction: column;
+    }
+    li img {
+        max-width: 100%;
+    }
+    li a {
+        color: #17a2b8;
+        text-overflow: clip;
+        width: 80%;
+        margin: 0 5%;
+    }
+}

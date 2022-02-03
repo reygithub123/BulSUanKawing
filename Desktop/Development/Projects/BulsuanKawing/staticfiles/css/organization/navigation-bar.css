@@ -1,0 +1,172 @@
+.navigation-bar {
+    background-color: #e6e6e6;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+}
+
+.orgsidenav {
+    z-index: 9999;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    padding-top: 60px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #00546A;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.orgsidenav a {
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 600;
+    padding: 8px 8px 20px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.orgsidenav a:hover {
+    color: #ffd700;
+}
+
+.orgsidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.size {
+    width: 230px;
+    display: block;
+}
+
+.sidenav-button {
+    font-size: 150px;
+    margin-top: 20px;
+    float: left;
+}
+
+.sidenav-button span {
+    width: 30px;
+    height: 4px;
+    background: black;
+    display: block;
+    margin-top: 4px;
+}
+
+.img-bulsuankawing-black {
+    width: 200px;
+    min-width: 100px;
+    max-width: 500px;
+    margin-top: -8px;
+}
+
+.navigation-buttons {
+    height: 100%;
+    display: flex;
+    text-align: left;
+    float: right;
+    align-items: center;
+    justify-content: right;
+    width: 40%;
+}
+
+.logout-icon-container {
+    width: fit-content;
+    margin-left: 5%;
+}
+
+.logout-icon {
+    width: 35px;
+}
+
+.logout:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+.message-icon-container {
+    width: fit-content;
+}
+
+.message-icon-container img {
+    width: 30px;
+}
+
+.line-separate {
+    position: relative;
+    display: inline;
+    height: 60%;
+    background-color: gray;
+    width: 2px;
+    margin: 15px 5px;
+}
+
+.org-logo-container {
+    width: fit-content;
+    margin-right: 2%;
+}
+
+.org-logo-container img {
+    width: 40px;
+}
+
+.org-text-container {
+    width: 40%;
+    margin-left: 1%;
+    height: 25px;
+}
+
+.org-text-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.img-bulsuankawing-white {
+    width: 15%;
+    min-width: 100px;
+    max-width: 500px;
+}
+
+@media screen and (max-height: 450px) {
+    .orgsidenav {
+        padding-top: 15px;
+    }
+    .orgsidenav a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .size {
+        width: 100%;
+    }
+    .navigation-buttons {
+        justify-content: right;
+        width: auto;
+    }
+    .org-text-container {
+        display: none;
+    }
+    .message-icon-container {
+        display: none;
+    }
+    .line-separate {
+        display: none;
+    }
+    .logout-icon-container {
+        display: none;
+    }
+}

@@ -1,0 +1,129 @@
+.header {
+    background-color: #00546A;
+    height: 55px;
+    padding: 10px 20px;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.go-back {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: white;
+}
+
+.go-back:hover {
+    color: #ffd700;
+}
+
+.under-header {
+    padding: 3px 10px;
+    height: 30px;
+    position: relative;
+    text-align: right;
+    z-index: 2;
+}
+
+.headlinks {
+    text-decoration: none;
+    background-clip: text;
+    color: black;
+}
+
+.headlinks:hover {
+    color: #b69b00;
+    text-decoration: none;
+}
+
+.vertical-line {
+    height: 20px;
+    background-color: black;
+    width: 1.5px;
+    float: right;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo-container div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.org-logo-swits {
+    margin-top: 3%;
+    width: 30%;
+    min-width: 200px;
+}
+
+.org-name {
+    margin: 0 10%;
+}
+
+.text-details-div {
+    text-align: center;
+    margin-top: 2%;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 100%;
+}
+
+.hr {
+    border: 1px solid black;
+}
+
+.upcoming-events-container {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(236, 236, 236);
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.sample-img-container {
+    background-color: white;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    width: 25%;
+    height: 400px;
+    min-width: 200px;
+    display: inline-block;
+    border-radius: 15px;
+    box-shadow: black 0px 0px 5px 0px;
+}
+
+.announcements-txt {
+    background-color: white;
+    color: black;
+    font-family: 'Monterrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    font-style: italic;
+    height: 50px;
+    width: auto;
+    margin-left: 15%;
+    margin-top: -2.5%;
+    position: absolute;
+}
+
+.announcements-container {
+    background-color: white;
+    height: 450px;
+    width: 80%;
+    border: 5px solid black;
+    border-radius: 15px;
+}
+
+.announcements-center {
+    display: flex;
+    justify-content: center;
+}

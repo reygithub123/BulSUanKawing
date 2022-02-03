@@ -1,0 +1,44 @@
+.banner-div {
+    height: 80vh;
+}
+
+.img1 {
+    width: 70%;
+    height: 150px;
+}
+
+.album1-txt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-align: left;
+}
+
+.btn-album1 {
+    border-radius: 20px;
+    width: 200px;
+    height: 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    border: none;
+    margin-top: 2%;
+    transition: 0.3s;
+}
+
+.btn-album1:hover {
+    background-color: #00546A;
+    color: white;
+}
+
+.category-sh1 {
+    background-color: #FFD700;
+    padding: 25px;
+    width: 80%;
+    border-radius: 25px;
+    margin-bottom: 2%;
+    float: left;
+}
+
+.shape-container {
+    margin-left: 15%;
+    margin-top: 30px;
+}

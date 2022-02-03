@@ -1,0 +1,17 @@
+.header-logo {
+    width: 20%;
+    min-width: 140px;
+}
+
+#branding h1 {
+    font-weight: bold;
+}
+
+caption {
+    border-radius: 5px;
+    color: #333;
+}
+
+caption.a {
+    color: #333;
+}

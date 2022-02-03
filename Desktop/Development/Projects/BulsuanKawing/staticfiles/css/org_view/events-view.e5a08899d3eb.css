@@ -1,0 +1,11 @@
+.form-contain {
+    height: 32px;
+    margin-top: 20px;
+}
+
+.events-container {
+    margin: 50px;
+    border-radius: 10px;
+    background-color: beige;
+    padding: 10px;
+}

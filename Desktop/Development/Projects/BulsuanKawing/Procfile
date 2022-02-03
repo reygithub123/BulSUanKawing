@@ -1,1 +1,1 @@
-web: gunicorn bulsuankawing.wsgi
+web: gunicorn bulsuankawing.wsgi:application --log-file

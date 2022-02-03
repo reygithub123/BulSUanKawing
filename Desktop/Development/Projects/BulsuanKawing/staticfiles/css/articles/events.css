@@ -1,0 +1,136 @@
+.gridview {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.left-menu {
+    padding: 60px 10px 30px 10px;
+    grid-column: 1 / 1;
+    font-size: 1.3rem;
+    text-decoration: none;
+    background-color: #111111;
+    backdrop-filter: blur(5px);
+}
+
+.left-menu a {
+    text-decoration: none;
+}
+
+.left-menu a:hover {
+    text-decoration: none;
+}
+
+.left-menu a div {
+    padding: 3px 5px;
+    border: 2px solid hsl(51, 100%, 50%);
+    color: #ffd700;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.left-menu a div:hover {
+    background-color: rgb(255, 217, 0);
+    color: #111111;
+    backdrop-filter: blur(5px);
+}
+
+.breaker {
+    display: inline;
+}
+
+.line-breaker {
+    display: none;
+}
+
+.form-contain {
+    height: 32px;
+    margin-top: 20px;
+}
+
+.events-container {
+    margin: 10px;
+    border-radius: 10px;
+    background-color: beige;
+    padding: 10px;
+}
+
+
+/* event viewing */
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 3%;
+}
+
+.img-sample {
+    width: 50%;
+    height: auto;
+}
+
+.event-container {
+    margin-top: 7%;
+}
+
+.event-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-left: 15%;
+    color: #00546A;
+    width: 70%;
+}
+
+.p-container p {
+    text-align: justify;
+    color: #001318;
+}
+
+.subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 15%;
+    color: #00546A;
+    width: 70%;
+}
+
+.text-container {
+    display: flex;
+    justify-content: center;
+}
+
+.p-container {
+    width: 70%;
+}
+
+#line {
+    width: 80%;
+    margin: 20px auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .gridview {
+        grid-template-columns: 100%;
+    }
+    .left-menu {
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+    }
+    .breaker {
+        display: none;
+    }
+    .line-breaker {
+        display: inline;
+    }
+    .eventshalf {
+        margin: 10px;
+    }
+    #search-input {
+        width: 70%
+    }
+}

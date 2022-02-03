@@ -1,0 +1,77 @@
+.animation {
+    animation: rotate-all 6s 0 infinite linear alternate;
+}
+
+.sh1 {
+    position: absolute;
+    width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    background-color: #f5d446;
+    animation: square-to-circle 4.5s 1.5s infinite cubic-bezier(1, .015, .295, 1.225) alternate-reverse;
+}
+
+.sh2 {
+    position: absolute;
+    width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    background-color: #00546A;
+    animation: square-to-circle2 4.5s 1.42s infinite cubic-bezier(1, .015, .295, 1.225) alternate-reverse;
+}
+
+@keyframes square-to-circle {
+    0% {
+        border-radius: 0 0 0 0;
+        transform: rotate(45deg);
+    }
+    25% {
+        border-radius: 50% 0 0 0;
+        background: #f5e49a;
+        transform: rotate(135deg);
+    }
+    50% {
+        border-radius: 50% 50% 0 0;
+        background: #d3af0d;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 50% 50% 50% 0;
+        background: #f3b200;
+        transform: rotate(315deg);
+    }
+    100% {
+        border-radius: 50%;
+        background: #f5e49a;
+        transform: rotate(404deg);
+    }
+}
+
+@keyframes square-to-circle2 {
+    0% {
+        border-radius: 0 0 0 0;
+        transform: rotate(45deg);
+    }
+    25% {
+        border-radius: 0 0 50% 0;
+        background: #488392;
+        transform: rotate(135deg);
+    }
+    50% {
+        border-radius: 0 0 50% 50%;
+        background: #002d38;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 50% 0 50% 50%;
+        background: #496268;
+        transform: rotate(315deg);
+    }
+    100% {
+        border-radius: 50%;
+        background: #488392;
+        transform: rotate(404deg);
+    }
+}

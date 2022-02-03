@@ -1,0 +1,82 @@
+.top-div {
+    background-color: lightgrey;
+    height: 200px;
+    width: 100%;
+    padding-top: 60px;
+}
+
+#organization-text {
+    text-align: center;
+    font-weight: bold;
+}
+
+.list-of-org-text {
+    text-align: center;
+    margin-top: 3%;
+}
+
+#sub-text {
+    margin-top: -2%;
+    font-size: 14px;
+}
+
+.org-img-container {
+    width: 100%;
+    display: block;
+    justify-content: center;
+    padding: 5%;
+}
+
+.org-img1-container {
+    float: left;
+    width: 23%;
+    min-width: 200px;
+    padding-top: 15px;
+    margin-right: 1%;
+    margin-top: 1%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: lightgrey 2px 3px 4px;
+}
+
+.org-img-container a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.org-img1-container:hover {
+    box-shadow: rgb(133, 133, 133) 2px 3px 4px;
+}
+
+.img1 {
+    width: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover
+}
+
+.img1-label {
+    padding: 5%;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: black;
+    height: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: wrap;
+    width: 100%
+}
+
+.img1-label:hover {
+    color: #00546A;
+}
+
+#search-org {
+    width: 40%;
+    min-width: 320px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 10px;
+}

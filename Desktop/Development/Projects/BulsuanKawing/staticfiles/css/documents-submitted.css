@@ -1,0 +1,52 @@
+.document-title {
+    color: #00546A;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 0px;
+}
+
+.docbuttons {
+    margin: 0 20px;
+    width: 100%;
+}
+
+.document-div {
+    background-color: white;
+    height: 100px;
+    width: 80%;
+    box-shadow: black 0px 2px 5px;
+    align-self: center;
+}
+
+.btn-div {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 3%;
+}
+
+.btn-receive {
+    border-radius: 30px;
+    border: 1px solid black;
+    background-color: white;
+    text-decoration: none;
+}
+
+.btn-return {
+    border-radius: 30px;
+    border: 1px solid black;
+    text-decoration: none;
+    margin-left: 5%;
+}
+
+.btn-return:hover {
+    background-color: #e6e6e6;
+}
+
+.btn-receive:hover {
+    background-color: #e6e6e6;
+}
