@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 import django_heroku
-import dk_database_url
+import dj_database_url
 from decouple import config
 
 from pathlib import Path
@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-0v6dx99-23_u%*t!#mj9(!d#5ow8+j9@^%ie#)$v28ufltxjqu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://bulsuan-kawing.herokuapp.com/"]
 
 
 # Application definition
