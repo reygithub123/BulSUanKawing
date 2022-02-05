@@ -49,7 +49,6 @@ six
 sqlparse
 toml
 Twisted
-twisted-iocpsupport
 txaio
 typing_extensions
 tzdata
