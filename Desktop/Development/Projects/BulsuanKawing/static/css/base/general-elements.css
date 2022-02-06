@@ -64,7 +64,7 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .hideme {
@@ -361,6 +361,7 @@
     height: fit-content;
     color: white;
     font-size: 18px;
+    justify-content: center;
 }
 
 .yellowbutton {

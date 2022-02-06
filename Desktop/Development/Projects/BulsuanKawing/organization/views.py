@@ -15,7 +15,7 @@ from django.urls.base import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.views import generic
 from django.views.decorators.http import require_GET, require_POST
-from PIL import Image as Im
+
 
 #direct imports
 

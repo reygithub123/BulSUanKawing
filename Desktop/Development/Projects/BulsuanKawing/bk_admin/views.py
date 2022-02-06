@@ -1058,6 +1058,7 @@ def add_album(request):
     
     name = request.POST.get("name")
     cover = request.FILES["cover"]
+    
     if not name or not cover:
     
         error = "Album Creation Failed"
@@ -1078,7 +1079,7 @@ def add_album(request):
     full_filename = os.path.join(BASE_PATH, folder, cover.name)
     dbfilename = os.path.join("gallery/",folder,cover.name)
     handle_uploaded_file(full_filename, cover)
-    newalbum = Album.objects.create(src_ID_id= org.id,name=name, key_image=dbfilename)
+    newalbum = Album.objects.create(src_ID_id= org.id,name=name, key_image=dbfilename, admin=True)
 
     return redirect("cms:view-album",  newalbum.id)
 

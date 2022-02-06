@@ -367,7 +367,7 @@ def view_gallery(request, *args, **kwargs):
         office_name = inf.office_name
         acronym = inf.name_acronym
         logo = inf.logo
-    #get Org
+    
     
     #get Gallery
     albums = Album.objects.filter(admin = True).order_by('-last_modified')
